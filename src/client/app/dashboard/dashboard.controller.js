@@ -15,7 +15,7 @@
     };
     vm.messageCount = 0;
     vm.people = [];
-    vm.title = 'Home';
+    vm.title = 'test';
 
     activate();
 
