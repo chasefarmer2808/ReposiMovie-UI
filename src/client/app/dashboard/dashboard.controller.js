@@ -5,9 +5,9 @@
     .module('app.dashboard')
     .controller('DashboardController', DashboardController);
 
-  DashboardController.$inject = ['$q', 'dataservice', 'logger'];
+  DashboardController.$inject = ['$q', 'dataservice', 'logger', 'Oracle'];
   /* @ngInject */
-  function DashboardController($q, dataservice, logger) {
+  function DashboardController($q, dataservice, logger, Oracle) {
     var vm = this;
     vm.news = {
       title: 'helloWorld',
@@ -16,6 +16,10 @@
     vm.messageCount = 0;
     vm.people = [];
     vm.title = 'test';
+
+    Oracle.getMoviesByTitle().then(function(response) {
+      console.log(response.data);
+    });
 
     activate();
 
