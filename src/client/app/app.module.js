@@ -9,7 +9,8 @@
     'app.layout',
     'app.mainsearch',
     'app.genresearch',
-    'app.castcrewsearch'
+    'app.castcrewsearch',
+    'app.searchpeople'
   ]);
 
 })();
