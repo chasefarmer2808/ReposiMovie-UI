@@ -7,7 +7,8 @@
     'app.admin',
     'app.dashboard',
     'app.layout',
-    'app.mainsearch'
+    'app.mainsearch',
+    'app.genresearch'
   ]);
 
 })();

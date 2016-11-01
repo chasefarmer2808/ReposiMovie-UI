@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.mainsearch')
+    .module('app.genresearch')
     .run(appRun);
 
   appRun.$inject = ['routerHelper'];
@@ -14,16 +14,16 @@
   function getStates() {
     return [
       {
-        state: 'mainsearch',
+        state: 'genresearch',
         config: {
-          url: '/',
-          templateUrl: 'app/mainsearch/mainsearch.html',
-          controller: 'MainsearchController',
+          url: '/genre',
+          templateUrl: 'app/genresearch/genresearch.html',
+          controller: 'GenresearchController',
           controllerAs: 'vm',
-          title: 'mainsearch',
+          title: 'genresearch',
           settings: {
             nav: 1,
-            content: '<i class="fa fa-dashboard"></i> Movie by Title'
+            content: '<i class="fa fa-dashboard"></i> Movie by Genre'
           }
         }
       }
