@@ -8,7 +8,8 @@
     'app.dashboard',
     'app.layout',
     'app.mainsearch',
-    'app.genresearch'
+    'app.genresearch',
+    'app.castcrewsearch'
   ]);
 
 })();
