@@ -16,7 +16,7 @@
       {
         state: 'searchpeople',
         config: {
-          url: '/',
+          url: '/people',
           templateUrl: 'app/searchpeople/searchpeople.html',
           controller: 'SearchPeopleController',
           controllerAs: 'vm',

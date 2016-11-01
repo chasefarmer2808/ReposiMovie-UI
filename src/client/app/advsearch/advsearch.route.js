@@ -16,7 +16,7 @@
       {
         state: 'advsearch',
         config: {
-          url: '/',
+          url: '/advanced',
           templateUrl: 'app/advsearch/advsearch.html',
           controller: 'AdvsearchController',
           controllerAs: 'vm',
