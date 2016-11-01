@@ -14,7 +14,7 @@
 
   var config = {
     appErrorPrefix: '[helloWorld Error] ',
-    appTitle: 'helloWorld'
+    appTitle: 'ReposiMovie'
   };
 
   core.value('config', config);
