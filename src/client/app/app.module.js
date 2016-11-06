@@ -12,7 +12,8 @@
     'app.castcrewsearch',
     'app.searchpeople',
     'app.advsearch',
-    'app.movie'
+    'app.movie',
+    'app.person'
   ]);
 
 })();
