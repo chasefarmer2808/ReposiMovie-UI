@@ -1,5 +1,8 @@
 angular.module('app').filter('poster', function() {
   return function(path) {
-    return "http://image.tmdb.org/t/p/original" + path;
+    if (!path)
+      return 'images/not-found.jpg';
+    else
+      return "http://image.tmdb.org/t/p/original" + path;
   }
 });

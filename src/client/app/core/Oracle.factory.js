@@ -1,24 +1,49 @@
 angular.module('app').factory('Oracle', ['$http', '$location',
   function($http, $location) {
     var methods = {
-      getMoviesByTitle: function(query) {
-        return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/search_title' + ((!query)? '' : query));
+      getMoviesByTitle: function(title) {
+        var query = (!title)? '' : ('?title=' + title);
+        return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/search_title' + query);
       },
 
-      getMoviesByGenre: function(query) {
-	      return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/search_genre' + ((!query)? '' : query));
+      getMoviesByGenre: function(genre) {
+        var query = ''
+        if (genre) {
+          if (genre.length > 0) {
+            query = '?'
+            for (var i = 0; i < genre.length; i++) {
+              if (i > 0)
+                query += '&';
+              query += 'genre=' + genre[i];
+            }
+          }
+        }
+	return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/search_genre' + query);
       },
 
-      getMoviesByCastCrew: function(query) {
-	      return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/search_castcrew' + ((!query)? '' : query));
+      getMoviesByCastCrew: function(name) {
+        var query = ''
+        if (name) {
+          if (name.length > 0) {
+            query = '?'
+            for (var i = 0; i < name.length; i++) {
+              if (i > 0)
+                query += '&';
+              query += 'name=' + name[i].toLowerCase();
+            }
+          }
+        }
+	return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/search_castcrew' + query);
       },
 
-      getMovieById: function(query) {
-	      return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/movie' + ((!query)? '' : query));
+      getMovieById: function(movie_id) {
+        var query = (!movie_id)? '' : ('?movie_id=' + movie_id);
+	return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/movie' + query);
       },
 
-      getPersonById: function(query) {
-	      return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/person' + ((!query)? '' : query));
+      getPersonById: function(person_id) {
+        var query = (!person_id)? '' : ('?person_id=' + person_id);
+	return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/person' + ((!query)? '' : query));
       },
     };
     return methods;

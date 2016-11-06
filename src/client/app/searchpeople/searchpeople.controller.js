@@ -9,12 +9,12 @@
   /*@ngInject*/
   function SearchPeopleController($q, logger, Oracle) {
     var vm = this;
-    Oracle.getPersonById('?person_id=500')
+    Oracle.getPersonById(500)
       .then(function(response) {
         vm.person = response.data;
         console.log(response.data);
       }, function(error) {
         console.log(error);
-    });
+    });  
   }
 })();

@@ -1,5 +1,22 @@
 <section id="castcrewsearch-view" class="mainbar">
-  <p>
-    Cast/Crew search view
-  </p>
+  <form class="form-group">
+    <div ng-repeat="name in vm.names track by $index">
+      <input class="form-control" ng-model="vm.names[$index]">
+      <button type="button" class="btn" ng-click="(vm.names.length != 1) && vm.names.splice($index,1)"><i class="fa fa-remove"></i></button> 
+      <button type="button" class="btn" ng-click="vm.names.push('')" ng-show="$index == vm.names.length - 1">New Person</button>
+    </div>
+    <button class="btn" ng-click="vm.findMovies()">hi</button>
+  </form>
+  <table class="table table-condensed table-striped">
+    <thead>
+      <tr>
+        <th>Movie Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="movie in vm.movies">
+        <td>{{movie.title}}</td>
+      </tr>
+    </tbody>
+  </table>
 </section>
