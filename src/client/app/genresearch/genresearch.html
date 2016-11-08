@@ -1,5 +1,14 @@
 <section id="genresearch-view" class="mainbar">
-  <p>
-    Genre search view
-  </p>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12" id="pagetitle">
+        <h2>Search for a Movie by Genres</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div vlass="col-xs-2" ng-repeat="genre in vm.genres">
+        <btn-checkbox-false>{{genre}}</btn-checkbox-false>
+      </div>
+    </div>
+  </div>
 </section>
