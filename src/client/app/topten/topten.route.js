@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.advsearch')
+    .module('app.topten')
     .run(appRun);
 
   appRun.$inject = ['routerHelper'];
@@ -14,16 +14,16 @@
   function getStates() {
     return [
       {
-        state: 'advsearch',
+        state: 'topten',
         config: {
-          url: '/advanced',
-          templateUrl: 'app/advsearch/advsearch.html',
-          controller: 'AdvsearchController',
+          url: '/topten',
+          templateUrl: 'app/topten/topten.html',
+          controller: 'TopTenController',
           controllerAs: 'vm',
-          title: 'advsearch',
+          title: 'TopTen',
           settings: {
-            nav: 6,
-            content: '<i class="fa fa-dashboard"></i> Advanced Search'
+            nav: 5,
+            content: '<i class="fa fa-dashboard"></i> Top 10'
           }
         }
       }

@@ -13,7 +13,8 @@
     'app.searchpeople',
     'app.advsearch',
     'app.movie',
-    'app.person'
+    'app.person',
+    'app.topten'
   ]);
 
 })();
