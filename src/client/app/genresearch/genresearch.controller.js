@@ -10,6 +10,8 @@
   function GenresearchController($q, logger, Oracle) {
     var vm = this;
     vm.genres;
+    vm.movies;
+    vm.selectedGenres = {};
 
     activate();
 
@@ -23,7 +25,33 @@
     function getAllGenres() {
       return Oracle.getAllGenres().then(function(data) {
         vm.genres = data.data;
+
+        vm.genres.forEach(function(genre) {
+          vm.selectedGenres[genre] = false;
+        });
       });
+    }
+
+    vm.toggleGenre = function(genre) {
+      if (vm.selectedGenres[genre]) {
+        vm.selectedGenres[genre] = false;
+      } else {
+        vm.selectedGenres[genre] = true;
+      }
+    }
+
+    vm.queryMovies = function() {
+      var genres = [];
+
+      for (var genre in vm.selectedGenres) {
+        if (vm.selectedGenres[genre]) {
+          genres.push(genre);
+        }
+      }
+
+      return Oracle.getMoviesByGenre(genres).then(function(data) {
+        vm.movies = data.data;
+      })
     }
   }
 })();

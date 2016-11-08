@@ -6,9 +6,34 @@
       </div>
     </div>
     <div class="row">
-      <div vlass="col-xs-2" ng-repeat="genre in vm.genres">
-        <btn-checkbox-false>{{genre}}</btn-checkbox-false>
+      <div class="btn-group">
+        <div class="col-xs-2" ng-repeat="genre in vm.genres">
+          <button type="button" class="btn btn-primary" ng-model="vm.selectedGenres[genre]" ng-click="vm.toggleGenre(genre)" uib-btn-checkbox>{{genre}}</label>
+        </div>
       </div>
     </div>
+    <div class="row">
+      <button type="button" class="btn btn-success" ng-click="vm.queryMovies()">Submit</button>
+    </div>
+  </div>
+  <div class="container">
+    <table class="table table-hover">
+      <tbody>
+        <tr ng-repeat="movie in vm.movies">
+          <td>
+            {{movie.title}}
+          </td>
+          <td>
+            {{movie.overview}}
+          </td>
+          <td>
+            {{movie.rating_average | number : 2}}
+          </td>
+          <td>
+            {{movie.run_time}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>
