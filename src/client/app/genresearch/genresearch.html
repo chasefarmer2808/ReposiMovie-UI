@@ -1,23 +1,43 @@
 <section id="genresearch-view" class="mainbar">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-12" id="pagetitle">
+      <div class="col-xs-12" id="pagetitle" <div style="text-align: center;">>
         <h2>Search for a Movie by Genres</h2>
       </div>
     </div>
+    <hr />
     <div class="row">
-      <div class="btn-group">
-        <div class="col-xs-2" ng-repeat="genre in vm.genres">
-          <button type="button" class="btn btn-primary" ng-model="vm.selectedGenres[genre]" ng-click="vm.toggleGenre(genre)" uib-btn-checkbox>{{genre}}</label>
-        </div>
+      <div style="text-align: center;">
+        <h3>Select Genres:</h3>
+      </div>
+      <div class="col-sm-2" ng-repeat="genre in vm.genres">
+        <label><input type="checkbox" ng-checked="vm.selectedGenres[genre]" ng-click="vm.toggleGenre(genre)" /> {{genre}}</label>
       </div>
     </div>
     <div class="row">
-      <button type="button" class="btn btn-success" ng-click="vm.queryMovies()">Submit</button>
+      <div class="col-md-12" style="text-align: center;">
+        <button type="button" class="btn btn-success" ng-click="vm.queryMovies()">Submit</button>
+      </div>
     </div>
   </div>
   <div class="container">
-    <table class="table table-hover">
+    <table class="table table-hover table-bordered" ng-show="vm.movies">
+      <thead>
+        <tr>
+          <th>
+            Title
+          </th>
+          <th>
+            Overview
+          </th>
+          <th>
+            Rating Out of 10
+          </th>
+          <th>
+            Runtime
+          </th>
+        </tr>
+      </thead>
       <tbody>
         <tr ng-repeat="movie in vm.movies">
           <td>
