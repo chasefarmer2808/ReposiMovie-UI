@@ -45,6 +45,14 @@ angular.module('app').factory('Oracle', ['$http', '$location',
         var query = (!person_id)? '' : ('?person_id=' + person_id);
 	return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/person' + ((!query)? '' : query));
       },
+
+      getAllGenres: function() {
+        var host = $location.host(),
+            port = '5000',
+            path = '/api/v1/get_all_genres';
+
+        return $http.get('http://' + host + ':' + port + path);
+      }
     };
     return methods;
   }
