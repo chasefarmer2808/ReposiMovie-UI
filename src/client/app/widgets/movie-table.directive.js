@@ -25,6 +25,7 @@
 
   function MovieTableController ($scope) {
     var vm = this;
-    console.log(vm.movies);
+    vm.sortType = 'title';
+    vm.sortReverse = false;
   }
 })();

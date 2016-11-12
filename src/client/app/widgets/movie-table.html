@@ -2,11 +2,11 @@
   <thead>
     <tr>
       <th>
-        <!-- <a href="#" ng-click="vm.sortType = 'Title'; vm.sortReverse = !vm.sortReverse"> -->
+        <a href="#" ng-click="vm.sortType = 'title'; vm.sortReverse = !vm.sortReverse;">
           Title
-          <!-- <span ng-show="vm.sortType == 'Title' && !vm.sortReverse" class="fa fa-caret-down"></span> -->
-          <!-- <span ng-show="vm.sortType == 'Title' && vm.sortReverse" class="fa fa-caret-up"></span> -->
-        <!-- </a> -->
+          <span ng-show="vm.sortType == 'title' && !vm.sortReverse" class="fa fa-caret-down"></span>
+          <span ng-show="vm.sortType == 'title' && vm.sortReverse" class="fa fa-caret-up"></span>
+        </a>
       </th>
       <th>
         Overview
@@ -20,7 +20,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="movie in vm.movies">
+    <tr ng-repeat="movie in vm.movies | orderBy:vm.sortType:vm.sortReverse">
       <td>
         {{movie.title}}
       </td>
