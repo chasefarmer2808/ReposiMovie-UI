@@ -21,11 +21,13 @@
     return directive;
   }
 
-  MovieTableController.$inject = ['$scope'];
+  MovieTableController.$inject = ['$scope', 'movieTableColumns'];
 
-  function MovieTableController ($scope) {
+  function MovieTableController ($scope, movieTableColumns) {
     var vm = this;
-    vm.sortType = 'title';
+    vm.movieTableColumns = movieTableColumns;
+    vm.sortType = vm.movieTableColumns[0];
     vm.sortReverse = false;
+
   }
 })();

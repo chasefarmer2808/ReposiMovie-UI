@@ -1,37 +1,19 @@
 <table class="table table-hover table-bordered table-stripped" ng-if="vm.movies">
   <thead>
     <tr>
-      <th>
-        <a href="#" ng-click="vm.sortType = 'title'; vm.sortReverse = !vm.sortReverse;">
-          Title
-          <span ng-show="vm.sortType == 'title' && !vm.sortReverse" class="fa fa-caret-down"></span>
-          <span ng-show="vm.sortType == 'title' && vm.sortReverse" class="fa fa-caret-up"></span>
+      <th ng-repeat="column in vm.movieTableColumns">
+        <a href="#" ng-click="vm.sortType = column; vm.sortReverse = !vm.sortReverse;">
+          {{column.replace('_', ' ') | titleCase}}
+          <span ng-show="vm.sortType == column && !vm.sortReverse" class="fa fa-caret-down"></span>
+          <span ng-show="vm.sortType == column && vm.sortReverse" class="fa fa-caret-up"></span>
         </a>
-      </th>
-      <th>
-        Overview
-      </th>
-      <th>
-        Rating Out of 10
-      </th>
-      <th>
-        Runtime
       </th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="movie in vm.movies | orderBy:vm.sortType:vm.sortReverse">
-      <td>
-        {{movie.title}}
-      </td>
-      <td>
-        {{movie.overview}}
-      </td>
-      <td>
-        {{movie.rating_average | number : 2}}
-      </td>
-      <td>
-        {{movie.run_time}}
+      <td ng-repeat="column in vm.movieTableColumns">
+        {{movie[column]}}
       </td>
     </tr>
   </tbody>
