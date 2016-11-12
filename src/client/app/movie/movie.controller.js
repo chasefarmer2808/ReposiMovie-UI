@@ -10,6 +10,21 @@
   function MovieController($q, logger, Oracle, $stateParams) {
     var vm = this;
     vm.movieId = $stateParams.movieId;
-    console.log(vm.movieId);
+    vm.movie;
+
+    activate();
+
+    function activate() {
+      var promises = [getMovie()];
+      return $q.all(promises).then(function() {
+        logger.info('Activated Movie Detail View')
+      });
+    }
+
+    function getMovie() {
+      return Oracle.getMovieById(vm.movieId).then(function(data) {
+        vm.movie = data.data;
+      });
+    }
   }
 })();
