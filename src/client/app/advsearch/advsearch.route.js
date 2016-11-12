@@ -23,7 +23,7 @@
           title: 'advsearch',
           settings: {
             nav: 6,
-            content: '<i class="fa fa-dashboard"></i> Advanced Search'
+            content: 'Advanced Search'
           }
         }
       }

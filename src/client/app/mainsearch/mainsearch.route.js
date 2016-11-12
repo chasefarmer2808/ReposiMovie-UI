@@ -23,7 +23,7 @@
           title: 'mainsearch',
           settings: {
             nav: 1,
-            content: '<i class="fa fa-dashboard"></i> Movie by Title'
+            content: 'Movie by Title'
           }
         }
       }

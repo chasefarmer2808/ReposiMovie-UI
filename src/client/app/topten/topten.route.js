@@ -23,7 +23,7 @@
           title: 'TopTen',
           settings: {
             nav: 5,
-            content: '<i class="fa fa-dashboard"></i> Top 10'
+            content: 'Top 10'
           }
         }
       }

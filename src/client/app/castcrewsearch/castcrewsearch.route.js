@@ -23,7 +23,7 @@
           title: 'castcrewsearch',
           settings: {
             nav: 1,
-            content: '<i class="fa fa-dashboard"></i> Movie by Cast/Crew'
+            content: 'Movie by Cast/Crew'
           }
         }
       }

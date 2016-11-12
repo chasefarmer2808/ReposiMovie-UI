@@ -23,7 +23,7 @@
           title: 'searchpeople',
           settings: {
             nav: 1,
-            content: '<i class="fa fa-dashboard"></i> Search People'
+            content: 'Search People'
           }
         }
       }

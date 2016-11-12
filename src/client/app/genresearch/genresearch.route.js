@@ -23,7 +23,7 @@
           title: 'genresearch',
           settings: {
             nav: 1,
-            content: '<i class="fa fa-dashboard"></i> Movie by Genre'
+            content: 'Movie by Genre'
           }
         }
       }
