@@ -28,6 +28,6 @@
     vm.movieTableColumns = movieTableColumns;
     vm.sortType = vm.movieTableColumns[0];
     vm.sortReverse = false;
-
+    vm.searchMovies;
   }
 })();
