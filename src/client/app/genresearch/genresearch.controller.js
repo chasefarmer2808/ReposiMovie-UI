@@ -12,6 +12,8 @@
     vm.genres;
     vm.movies;
     vm.selectedGenres = {};
+    vm.sortType;
+    vm.sortReverse = false;
 
     activate();
 

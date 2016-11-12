@@ -1,0 +1,38 @@
+<table class="table table-hover table-bordered table-stripped" ng-if="vm.movies">
+  <thead>
+    <tr>
+      <th>
+        <!-- <a href="#" ng-click="vm.sortType = 'Title'; vm.sortReverse = !vm.sortReverse"> -->
+          Title
+          <!-- <span ng-show="vm.sortType == 'Title' && !vm.sortReverse" class="fa fa-caret-down"></span> -->
+          <!-- <span ng-show="vm.sortType == 'Title' && vm.sortReverse" class="fa fa-caret-up"></span> -->
+        <!-- </a> -->
+      </th>
+      <th>
+        Overview
+      </th>
+      <th>
+        Rating Out of 10
+      </th>
+      <th>
+        Runtime
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="movie in vm.movies">
+      <td>
+        {{movie.title}}
+      </td>
+      <td>
+        {{movie.overview}}
+      </td>
+      <td>
+        {{movie.rating_average | number : 2}}
+      </td>
+      <td>
+        {{movie.run_time}}
+      </td>
+    </tr>
+  </tbody>
+</table>

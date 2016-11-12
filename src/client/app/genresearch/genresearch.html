@@ -1,7 +1,7 @@
 <section id="genresearch-view" class="mainbar">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-12" id="pagetitle" <div style="text-align: center;">>
+      <div class="col-xs-12" id="pagetitle" <div style="text-align: center;">
         <h2>Search for a Movie by Genres</h2>
       </div>
     </div>
@@ -21,11 +21,16 @@
     </div>
   </div>
   <div class="container">
-    <table class="table table-hover table-bordered" ng-show="vm.movies">
+    <movie-table movies="vm.movies"></movie-table>
+    <!-- <table class="table table-hover table-bordered table-stripped" ng-if="vm.movies">
       <thead>
         <tr>
           <th>
-            Title
+            <a href="#" ng-click="vm.sortType = 'Title'; vm.sortReverse = !vm.sortReverse">
+              Title
+              <span ng-show="vm.sortType == 'Title' && !vm.sortReverse" class="fa fa-caret-down"></span>
+              <span ng-show="vm.sortType == 'Title' && vm.sortReverse" class="fa fa-caret-up"></span>
+            </a>
           </th>
           <th>
             Overview
@@ -39,7 +44,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="movie in vm.movies">
+        <tr ng-repeat="movie in vm.movies | orderBy:sortType:sortReverse">
           <td>
             {{movie.title}}
           </td>
@@ -54,6 +59,6 @@
           </td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
   </div>
 </section>
