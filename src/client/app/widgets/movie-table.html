@@ -1,12 +1,12 @@
-<div class="row">
-  <div class="col-md-12" style="text-align: center;">
+<div class="row" ng-if="vm.movies">
+  <div class="col-md-12">
     <form>
-      <div class="form-group">
+      <div class="form-group col-md-offset-4 col-md-8">
         <div class="input-group">
           <div class="input-group-addon">
             <i class="fa fa-search"></i>
           </div>
-          <input type="text" class="form-control" placeholder="Search..." ng-model="searchMovies" />
+          <input type="text" class="form-control" placeholder="Search..." ng-model="vm.searchMovies" />
         </div>
       </div>
     </form>
@@ -26,7 +26,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="movie in vm.movies | orderBy:vm.sortType:vm.sortReverse | filter:searchMovies">
+    <tr ng-repeat="movie in vm.movies | orderBy:vm.sortType:vm.sortReverse | filter:vm.searchMovies">
       <td ng-repeat="column in vm.movieTableColumns">
         <a href="/movie/{{vm.movies[$index].movie_id}}">
           {{movie[column]}}

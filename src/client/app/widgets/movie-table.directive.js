@@ -1,6 +1,12 @@
 (function() {
   'use strict';
 
+  /**
+  *@desc a movie table directive that displays query results in a table with sortable rows and filter.
+  *@example <movie-table movies=vm.movies></movie-table>
+  */
+
+
   angular
     .module('app.widgets')
     .directive('movieTable', movieTable);
