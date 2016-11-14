@@ -26,11 +26,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="movie in vm.movies | orderBy:vm.sortType:vm.sortReverse | filter:vm.searchMovies">
+    <tr ng-repeat="movie in vm.movies | orderBy:vm.sortType:vm.sortReverse | filter:vm.searchMovies" ng-click="vm.goToMovieDetail(movie.movie_id)">
       <td ng-repeat="column in vm.movieTableColumns">
-        <a href="/movie/{{vm.movies[$index].movie_id}}">
-          {{movie[column]}}
-        </a>
+        {{movie[column]}}
       </td>
     </tr>
   </tbody>

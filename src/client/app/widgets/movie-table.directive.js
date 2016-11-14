@@ -27,13 +27,17 @@
     return directive;
   }
 
-  MovieTableController.$inject = ['$scope', 'movieTableColumns'];
+  MovieTableController.$inject = ['$scope', '$location', 'movieTableColumns'];
 
-  function MovieTableController ($scope, movieTableColumns) {
+  function MovieTableController ($scope, $location, movieTableColumns) {
     var vm = this;
     vm.movieTableColumns = movieTableColumns;
     vm.sortType = vm.movieTableColumns[0];
     vm.sortReverse = false;
     vm.searchMovies;
+
+    vm.goToMovieDetail = function(movieId) {
+      $location.path('/movie/' + movieId);
+    }
   }
 })();
