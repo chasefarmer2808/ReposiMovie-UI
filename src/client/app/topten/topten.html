@@ -4,13 +4,25 @@
   </div>
   
   <div style="text-align: center;">
-    <h3>All Time</h3>
   </div>
   <div class="container">
-	<movie-table movies="vm.movies"></movie-table>
+    <div class="col-md-6">
+	  <div style="text-align: center;">
+	    <h3>All Time</h3>
+	  </div>
+	  <movie-table2 movies="vm.movies"></movie-table2>
+	</div>
+	<div class="col-md-6">
+	  <div style="text-align: center;">
+	    <h3>All Time</h3>
+	  </div>
+	  <movie-table movies="vm.movies"></movie-table>
+	</div>
   </div>
   
   <div class="container">
-	<movie-table movies="getTop10_box()"></movie-table>
+	<div class="col-md-6">
+	  <movie-table movies="getTop10_box()"></movie-table>
+	</div>
   </div>
 </section>
