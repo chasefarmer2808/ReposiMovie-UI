@@ -78,10 +78,14 @@
     <div class="container-fluid">
       <div class="row">
         <h3 class="col-md-6" style="text-align:center;">Cast ({{vm.movie.cast.length}})</h3>
+        <h3 class="col-md-6" style="text-align:center;">Crew ({{vm.movie.crew.length}})</h3>
       </div>
       <div class="row">
         <div class="col-md-6">
-          <cast-table cast="vm.movie.cast"></cast-table>
+          <person-table people="vm.movie.cast" columns="vm.castColumns" search="true"></person-table>
+        </div>
+        <div class="col-md-6">
+          <person-table people="vm.movie.crew" columns="vm.crewColumns" search="true"></person-table>
         </div>
       </div>
     </div>
