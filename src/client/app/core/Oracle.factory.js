@@ -45,6 +45,22 @@ angular.module('app').factory('Oracle', ['$http', '$location',
         var query = (!person_id)? '' : ('?person_id=' + person_id);
 	return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/person' + ((!query)? '' : query));
       },
+	  
+	  getTop10: function() {
+        var host = $location.host(),
+            port = '5000',
+            path = '/api/v1/top10?option=top10';
+
+        return $http.get('http://' + host + ':' + port + path);
+      },
+	  
+	  getTop10_box: function() {
+        var host = $location.host(),
+            port = '5000',
+            path = '/api/v1/top10?option=top10_box';
+
+        return $http.get('http://' + host + ':' + port + path);
+      },
 
       getAllGenres: function() {
         var host = $location.host(),
@@ -53,6 +69,9 @@ angular.module('app').factory('Oracle', ['$http', '$location',
 
         return $http.get('http://' + host + ':' + port + path);
       }
+	  
+	  
+	  
     };
     return methods;
   }
