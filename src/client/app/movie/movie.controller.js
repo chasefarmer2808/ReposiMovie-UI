@@ -11,6 +11,7 @@
     var vm = this;
     vm.movieId = $stateParams.movieId;
     vm.movie;
+    vm.featuredCrew = [];
 
     activate();
 
@@ -24,6 +25,12 @@
     function getMovie() {
       return Oracle.getMovieById(vm.movieId).then(function(data) {
         vm.movie = data.data;
+
+        vm.movie.crew.forEach(function(crew) {
+          if (crew.job == 'Director') {
+            vm.featuredCrew.push(crew);
+          }
+        });
       });
     }
   }

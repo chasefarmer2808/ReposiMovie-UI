@@ -6,5 +6,6 @@
     .module('app.core')
     .constant('toastr', toastr)
     .constant('moment', moment)
-    .constant('movieTableColumns', ['title', 'overview', 'rating_average', 'run_time']);
+    .constant('movieTableColumns', ['title', 'overview', 'rating_average', 'run_time'])
+    .constant('castTableColumns', ['poster_path', 'name', 'role']);
 })();
