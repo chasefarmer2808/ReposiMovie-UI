@@ -61,6 +61,22 @@ angular.module('app').factory('Oracle', ['$http', '$location',
 
         return $http.get('http://' + host + ':' + port + path);
       },
+	  
+	  getTop10_genres: function() {
+        var host = $location.host(),
+            port = '5000',
+            path = '/api/v1/top10?option=top10_genres';
+
+        return $http.get('http://' + host + ':' + port + path);
+      },
+	  
+	  getTop10_worst: function() {
+        var host = $location.host(),
+            port = '5000',
+            path = '/api/v1/top10?option=top10_worst';
+
+        return $http.get('http://' + host + ':' + port + path);
+      },
 
       getAllGenres: function() {
         var host = $location.host(),

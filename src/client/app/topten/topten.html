@@ -3,8 +3,6 @@
     <h2>Top 10 Movies</h2>
   </div>
   
-  <div style="text-align: center;">
-  </div>
   <div class="container">
     <div class="col-md-6">
 	  <div style="text-align: center;">
@@ -14,9 +12,24 @@
 	</div>
 	<div class="col-md-6">
 	  <div style="text-align: center;">
+	    <h3>Box Office</h3>
+	  </div>
+	  <movie-table2 movies="vm.movies_box"></movie-table2>
+	</div>
+  </div>
+  
+  <div class="container">
+    <div class="col-md-6">
+	  <div style="text-align: center;">
+	    <h3>All Time Worst</h3>
+	  </div>
+	  <movie-table2 movies="vm.movies_worst"></movie-table2>
+	</div>
+	<div class="col-md-6">
+	  <div style="text-align: center;">
 	    <h3>All Time</h3>
 	  </div>
-	  <movie-table movies="vm.movies"></movie-table>
+	  <movie-table2 movies="vm.movies"></movie-table2>
 	</div>
   </div>
   

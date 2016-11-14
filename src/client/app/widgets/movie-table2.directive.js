@@ -27,7 +27,7 @@
     return directive;
   }
 
-  MovieTableController.$inject = ['$scope', '$location', 'movieTableColumns2'];
+  MovieTableController2.$inject = ['$scope', '$location', 'movieTableColumns2'];
 
   function MovieTableController2 ($scope, $location, movieTableColumns2) {
     var vm = this;
