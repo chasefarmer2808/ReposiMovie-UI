@@ -5,15 +5,14 @@
     .module('app.genresearch')
     .controller('GenresearchController', GenresearchController);
 
-  GenresearchController.$inject = ['$q', 'logger', 'Oracle'];
+  GenresearchController.$inject = ['$q', 'logger', 'Oracle', 'movieTableColumns'];
   /*@ngInject*/
-  function GenresearchController($q, logger, Oracle) {
+  function GenresearchController($q, logger, Oracle, movieTableColumns) {
     var vm = this;
     vm.genres;
     vm.movies;
     vm.selectedGenres = {};
-    vm.sortType;
-    vm.sortReverse = false;
+    vm.movieTableColumns = movieTableColumns;
 
     activate();
 

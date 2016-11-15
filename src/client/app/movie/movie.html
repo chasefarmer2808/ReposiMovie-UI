@@ -33,10 +33,17 @@
               {{vm.movie.rating_count}}
             </p>
           </div>
-          <div class="col-md-3">
+          <br />
+          <div class="col-md-4">
             <h4>Genre(s): </h4>
             <p ng-repeat="g in vm.movie.genres">
               {{g.name}}
+            </p>
+          </div>
+          <div class="col-md-5">
+            <h4>Featured Crew: </h4>
+            <p ng-repeat="c in vm.featuredCrew">
+              {{c.name}}, {{c.job}}
             </p>
           </div>
         </div>
@@ -67,8 +74,20 @@
       </div>
     </div>
     </div>
-    <div class="row">
-
+    <hr />
+    <div class="container-fluid">
+      <div class="row">
+        <h3 class="col-md-6" style="text-align:center;">Cast ({{vm.movie.cast.length}})</h3>
+        <h3 class="col-md-6" style="text-align:center;">Crew ({{vm.movie.crew.length}})</h3>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <custom-table data="vm.movie.cast" columns="vm.castColumns" search="true" poster="true"></custom-table>
+        </div>
+        <div class="col-md-6">
+          <custom-table data="vm.movie.crew" columns="vm.crewColumns" search="true" poster="true"></custom-table>
+        </div>
+      </div>
     </div>
   </div>
 </section>

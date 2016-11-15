@@ -1,0 +1,41 @@
+<div class="row" ng-if="vm.data && vm.search">
+  <div class="col-md-12">
+    <form>
+      <div class="form-group col-md-offset-2 col-md-8">
+        <div class="input-group">
+          <div class="input-group-addon">
+            <i class="fa fa-search"></i>
+          </div>
+          <input type="text" class="form-control" placeholder="Search..." ng-model="vm.searchData" />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<table class="table table-hover table-bordered table-stripped" ng-if="vm.data">
+  <thead>
+    <tr>
+      <th ng-if="vm.poster">
+        Poster
+      </th>
+      <th ng-repeat="column in vm.columns">
+        <a href="#" ng-click="vm.sortType = column; vm.sortReverse = !vm.sortReverse;">
+          {{column.replace('_', ' ') | titleCase}}
+          <span ng-show="vm.sortType == column && !vm.sortReverse" class="fa fa-caret-down"></span>
+          <span ng-show="vm.sortType == column && vm.sortReverse" class="fa fa-caret-up"></span>
+        </a>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="data in vm.data | orderBy:vm.sortType:vm.sortReverse | filter:vm.searchData" ng-click="vm.goToDataDetail(data)">
+      <td style="text-align:center;" ng-if="vm.poster">
+        <img src="{{data.poster_path | poster}}" style="width: 80%; height: 20%" />
+      </td>
+      <td ng-repeat="col in vm.columns">
+        {{data[col]}}
+      </td>
+    </tr>
+  </tbody>
+</table>
