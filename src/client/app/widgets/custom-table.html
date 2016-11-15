@@ -1,4 +1,4 @@
-<div class="row" ng-if="vm.people && vm.search">
+<div class="row" ng-if="vm.data && vm.search">
   <div class="col-md-12">
     <form>
       <div class="form-group col-md-offset-2 col-md-8">
@@ -6,17 +6,17 @@
           <div class="input-group-addon">
             <i class="fa fa-search"></i>
           </div>
-          <input type="text" class="form-control" placeholder="Search..." ng-model="vm.searchPeople" />
+          <input type="text" class="form-control" placeholder="Search..." ng-model="vm.searchData" />
         </div>
       </div>
     </form>
   </div>
 </div>
 
-<table class="table table-hover table-bordered table-stripped" ng-if="vm.people">
+<table class="table table-hover table-bordered table-stripped" ng-if="vm.data">
   <thead>
     <tr>
-      <th>
+      <th ng-if="vm.poster">
         Poster
       </th>
       <th ng-repeat="column in vm.columns">
@@ -29,12 +29,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="person in vm.people | orderBy:vm.sortType:vm.sortReverse | filter:vm.searchPeople" ng-click="vm.goToPersonDetail(person.person_id)">
-      <td style="text-align:center;">
-        <img src="{{person.poster_path | poster}}" style="width: 80%; height: 20%" />
+    <tr ng-repeat="data in vm.data | orderBy:vm.sortType:vm.sortReverse | filter:vm.searchData" ng-click="vm.goToDataDetail(data)">
+      <td style="text-align:center;" ng-if="vm.poster">
+        <img src="{{data.poster_path | poster}}" style="width: 80%; height: 20%" />
       </td>
       <td ng-repeat="col in vm.columns">
-        {{person[col]}}
+        {{data[col]}}
       </td>
     </tr>
   </tbody>
