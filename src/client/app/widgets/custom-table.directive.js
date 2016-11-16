@@ -35,7 +35,6 @@
     vm.sortType;
     vm.sortReverse = false;
     vm.searchData;
-    console.log(vm.poster)
 
     vm.goToDataDetail = function(data) {
       if (data.movie_id) {
@@ -43,6 +42,12 @@
       } else if (data.person_id) {
         $window.open('/person/' + data.person_id, '_blank');
       }
+    }
+
+    vm.resetTable = function() {
+      vm.sortType = '';
+      vm.sortReverse = false;
+      vm.searchData = '';
     }
   }
 })();
