@@ -1,8 +1,21 @@
 <section id="person-view" class="mainbar">
-  <p>
-    Person detail view
-  </p>
-  <p>
-    Person ID: {{vm.personId}}
-  </p>
+  <div class="row" style="text-align: center;">
+    <h1>{{vm.person.name}}</h1>
+  </div>
+  <div class="row" style="text-align: center;">
+    <img src="{{vm.person.poster_path | poster}}" style="width: 35%; height: 35%;" />
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 style="text-align: center;">Roles</h2>
+        <custom-table data="vm.person.roles" columns="['title', 'role', 'release_date']" poster="true"></custom-table>
+      </div>
+      <div class="col-md-6">
+        <h2 style="text-align: center;">Jobs</h2>
+        <custom-table data="vm.person.jobs" columns="['title', 'job', 'department', 'release_date']" poster="true"></custom-table>
+      </div>
+    </div>
+  </div>
 </section>

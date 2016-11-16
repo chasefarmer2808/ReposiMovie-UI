@@ -4,10 +4,10 @@
   }
 </style>
 
-<div class="row" ng-if="vm.data && vm.search">
-  <div class="col-md-12">
+<div class="row" ng-if="vm.data">
+  <div class="col-md-offset-2 col-md-8" ng-if="vm.search">
     <form>
-      <div class="form-group col-md-offset-2 col-md-8">
+      <div class="form-group">
         <div class="input-group">
           <div class="input-group-addon">
             <i class="fa fa-search"></i>
@@ -16,9 +16,9 @@
         </div>
       </div>
     </form>
-    <div class="col-md-1">
-      <span class="fa fa-undo fa-lg" aria-hidden="true" style="cursor: pointer;" ng-click="vm.resetTable()"></span>
-    </div>
+  </div>
+  <div class="col-md-offset-11 col-md-1">
+    <span class="fa fa-undo fa-2x" aria-hidden="true" style="cursor: pointer;" ng-click="vm.resetTable()"></span>
   </div>
 </div>
 
