@@ -1,5 +1,37 @@
 <section id="mainsearch-view" class="mainbar">
-  <p>
-    Main search view
-  </p>
+  <style>
+    .jumbotron {
+      background-image: url("src/client/images/curtain2.jpg");
+      background-repeat: no-repeat;
+      text-align: center;
+      height: 35vh;
+      background-size: 100% 100vh;
+      align: center;
+      vertical-align: middle;
+    }
+  </style>
+  <div class="jumbotron">
+    <div class="container">
+      <h1 style="color: white;">Welcome to ReposiMovie!</h1>
+    </div>
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4">
+        <form>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-search"></i>
+              </div>
+              <input type="text" class="form-control" placeholder="Enter a Title..." ng-model="vm.search"/>
+            </div>
+            <button type="submit" class="btn btn-success" ng-click="vm.queryMovies()">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="container" ng-show="vm.movies">
+    <h2 style="text-align: center;">Results</h2>
+    <custom-table data="vm.movies" columns="vm.movieTableColumns" search="true" poster="true"></custom-table>
+  </div>
 </section>

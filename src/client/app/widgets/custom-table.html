@@ -3,24 +3,26 @@
     color: #888;
   }
 </style>
-
-<div class="row" ng-if="vm.data">
-  <div class="col-md-offset-2 col-md-8" ng-if="vm.search">
-    <form>
-      <div class="form-group">
-        <div class="input-group">
-          <div class="input-group-addon">
-            <i class="fa fa-search"></i>
+<div class="container">
+  <div class="row" ng-if="vm.data">
+    <div class="col-offset-4 col-md-4" ng-if="vm.search">
+      <form>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class="fa fa-search"></i>
+            </div>
+            <input type="text" class="form-control" placeholder="Search..." ng-model="vm.searchData" />
           </div>
-          <input type="text" class="form-control" placeholder="Search..." ng-model="vm.searchData" />
         </div>
-      </div>
-    </form>
-  </div>
-  <div class="col-md-offset-11 col-md-1">
-    <span class="fa fa-undo fa-2x" aria-hidden="true" style="cursor: pointer;" ng-click="vm.resetTable()"></span>
+      </form>
+    </div>
+    <div class="col-md-offset-11 col-md-1">
+      <span class="fa fa-undo fa-2x" aria-hidden="true" style="cursor: pointer;" ng-click="vm.resetTable()"></span>
+    </div>
   </div>
 </div>
+
 
 <table class="table table-hover table-bordered table-stripped" ng-if="vm.data">
   <thead>
