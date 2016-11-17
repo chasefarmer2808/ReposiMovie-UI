@@ -43,7 +43,7 @@
         <img src="{{data.poster_path | poster}}" style="width: 80%; height: 20%" />
       </td>
       <td ng-repeat="col in vm.columns">
-        {{data[col]}}
+        {{data[col] | decimalFilter}}
       </td>
     </tr>
   </tbody>
