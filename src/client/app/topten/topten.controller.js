@@ -5,19 +5,21 @@
     .module('app.topten')
     .controller('TopTenController', TopTenController);
 
-  TopTenController.$inject = ['$q', 'logger', 'Oracle'];
+  TopTenController.$inject = ['$q', 'logger', 'Oracle', 'top10GenresColumns', 'movieTableColumns2'];
   /*@ngInject*/
-  function TopTenController($q, logger, Oracle) {
+  function TopTenController($q, logger, Oracle, top10GenresColumns, movieTableColumns2) {
     var vm = this;
 	vm.movies;
 	vm.movies_box;
 	vm.movies_worst;
 	vm.genres;
+	vm.top10GenresColumns = top10GenresColumns;
+	vm.movieTableColumns2 = movieTableColumns2;
 	
 	activate();
 	
 	function activate() {
-      var promises = [getTop10(), getTop10_box(), getTop10_worst()];
+      var promises = [getTop10(), getTop10_box(), getTop10_worst(), getTop10_genres()];
       return $q.all(promises).then(function() {
         logger.info('Activated Genre View');
       });
