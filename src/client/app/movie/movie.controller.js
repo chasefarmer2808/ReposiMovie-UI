@@ -5,9 +5,9 @@
     .module('app.movie')
     .controller('MovieController', MovieController);
 
-  MovieController.$inject = ['$q', 'logger', 'Oracle', '$stateParams', 'castTableColumns', 'crewTableColumns'];
+  MovieController.$inject = ['$q', 'logger', 'Oracle', '$stateParams', '$window', 'castTableColumns', 'crewTableColumns'];
   /*@ngInject*/
-  function MovieController($q, logger, Oracle, $stateParams, castTableColumns, crewTableColumns) {
+  function MovieController($q, logger, Oracle, $stateParams, $window, castTableColumns, crewTableColumns) {
     var vm = this;
     vm.movieId = $stateParams.movieId;
     vm.movie;
@@ -71,9 +71,12 @@
           randNums.forEach(function(num) {
             vm.similarMovies.push(movies[num]);
           });
-          console.log(vm.similarMovies);
         }
       });
+    }
+
+    vm.goToMovieDetail = function(id) {
+        $window.open('/movie/' + id, '_blank');
     }
   }
 })();
