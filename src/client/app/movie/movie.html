@@ -76,6 +76,17 @@
     </div>
     <hr />
     <div class="container-fluid">
+      <div class="row" style="text-align: center;">
+        <h2>Similar Movies</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-2" ng-repeat="movie in vm.similarMovies">
+          {{movie.title}}
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="container-fluid">
       <div class="row">
         <h3 class="col-md-6" style="text-align:center;">Cast ({{vm.movie.cast.length}})</h3>
         <h3 class="col-md-6" style="text-align:center;">Crew ({{vm.movie.crew.length}})</h3>
