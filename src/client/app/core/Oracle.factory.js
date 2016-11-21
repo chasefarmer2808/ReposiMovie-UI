@@ -108,6 +108,14 @@ angular.module('app').factory('Oracle', ['$http', '$location',
             path = '/api/v1/get_all_crew';
 
         return $http.get('http://' + host + ':' + port + path);
+      },
+
+      getMinReleaseDate: function() {
+        var host = $location.host(),
+            port = '5000',
+            path = '/api/v1/get_min_release_date';
+
+        return $http.get('http://' + host + ':' + port + path);
       }
     };
     return methods;
