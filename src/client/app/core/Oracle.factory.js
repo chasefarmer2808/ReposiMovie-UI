@@ -45,7 +45,7 @@ angular.module('app').factory('Oracle', ['$http', '$location',
         var query = (!person_id)? '' : ('?person_id=' + person_id);
 	return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/person' + ((!query)? '' : query));
       },
-	  
+
 	  getTop10: function() {
         var host = $location.host(),
             port = '5000',
@@ -53,7 +53,7 @@ angular.module('app').factory('Oracle', ['$http', '$location',
 
         return $http.get('http://' + host + ':' + port + path);
       },
-	  
+
 	  getTop10_box: function() {
         var host = $location.host(),
             port = '5000',
@@ -61,7 +61,7 @@ angular.module('app').factory('Oracle', ['$http', '$location',
 
         return $http.get('http://' + host + ':' + port + path);
       },
-	  
+
 	  getTop10_genres: function() {
         var host = $location.host(),
             port = '5000',
@@ -69,7 +69,7 @@ angular.module('app').factory('Oracle', ['$http', '$location',
 
         return $http.get('http://' + host + ':' + port + path);
       },
-	  
+
 	  getTop10_worst: function() {
         var host = $location.host(),
             port = '5000',
@@ -84,10 +84,31 @@ angular.module('app').factory('Oracle', ['$http', '$location',
             path = '/api/v1/get_all_genres';
 
         return $http.get('http://' + host + ':' + port + path);
+      },
+
+      getAllCompanies: function() {
+        var host = $location.host(),
+            port = '5000',
+            path = '/api/v1/get_all_companies';
+
+        return $http.get('http://' + host + ':' + port + path);
+      },
+
+      getAllCast: function() {
+        var host = $location.host(),
+            port = '5000',
+            path = '/api/v1/get_all_cast';
+
+        return $http.get('http://' + host + ':' + port + path);
+      },
+
+      getAllCrew: function() {
+        var host = $location.host(),
+            port = '5000',
+            path = '/api/v1/get_all_crew';
+
+        return $http.get('http://' + host + ':' + port + path);
       }
-	  
-	  
-	  
     };
     return methods;
   }
