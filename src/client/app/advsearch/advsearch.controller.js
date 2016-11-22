@@ -59,6 +59,10 @@
       vm.queryParams.people = [];
     }
 
+    vm.queryMovies = function() {
+      console.log(vm.queryParams);
+    }
+
     activate();
 
     function activate() {
