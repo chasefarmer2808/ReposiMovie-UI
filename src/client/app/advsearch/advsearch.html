@@ -1,4 +1,13 @@
 <section id="advsearch-view" class="mainbar">
+  <style>
+    #trash {
+      cursor: pointer;
+    }
+
+    #trash:hover {
+      background-color: #ac2925;
+    }
+  </style>
   <div class="container-fluid">
     <div class="row" style="text-align: center;">
       <h1>Advanced Search</h1>
@@ -74,57 +83,43 @@
         <div class="form-group col-md-4">
           <label>Genres:</label>
           <div class="row">
-            <ui-select multiple ng-model="vm.queryParams.genres">
-              <ui-select-match placeholder="Select a Genre...">
-                {{$item}}
-              </ui-select-match>
-              <ui-select-choices repeat="genre in (vm.genres | filter: $select.search) track by genre">
-                {{genre}}
-              </ui-select-choices>
-            </ui-select>
+            <div class="input-group">
+              <ui-select multiple ng-model="vm.queryParams.genres">
+                <ui-select-match placeholder="Select a Genre...">
+                  {{$item}}
+                </ui-select-match>
+                <ui-select-choices repeat="genre in (vm.genres | filter: $select.search) track by genre">
+                  {{genre}}
+                </ui-select-choices>
+              </ui-select>
+              <span class="input-group-addon" id="trash" ng-click="vm.clearGenres()"><i class="fa fa-trash" aria-hidden="true"></i></span>
+            </div>
           </div>
-
-
-
-          <!-- <div class="row" ng-repeat="g in vm.queryParams.genres">
-            <ui-select ng-model="g">
-              <ui-select-match placeholder="Select a genre...">
-
-                <span ng-bind="vm.queryParams.genres[$index]"></span>
-              </ui-select-match>
-              <ui-select-choices repeat="genre in (vm.genres | filter: $select.search) track by genre">
-                <div ng-click="vm.addGenre(genre)">
-                  <span ng-bind="genre"></span>
-                </div>
-              </ui-select-choices>
-            </ui-select> -->
-
-            <!-- repeat="item in (itemArray | filter: $select.search) track by item.id" -->
-            <!-- <select>
-              <option ng-repeat="genre in vm.genres" ng-value="genre">
-                {{genre}}
-              </option>
-            </select> -->
           </div>
-        </div>
         <div class="form-group col-md-4">
           <label>Production Companies:</label>
-          <div class="row" ng-repeat="t in vm.equalities">
-            <select>
-              <option ng-repeat="genre in vm.genres" ng-value="genre">
-                {{genre}}
-              </option>
-            </select>
+          <div class="row">
+            <div class="input-group">
+              <ui-select multiple tagging ng-model="vm.queryParams.companies">
+                <ui-select-match placeholder="Enter companies...">{{$item}}</ui-select-match>
+                <ui-select-choices repeat="company in (vm.companies | filter: $select.search)">
+                </ui-select-choices>
+              </ui-select>
+              <span class="input-group-addon" id="trash" ng-click="vm.clearCompanies()"><i class="fa fa-trash" aria-hidden="true"></i></span>
+            </div>
           </div>
         </div>
         <div class="form-group col-md-4">
           <label>People:</label>
-          <div class="row" ng-repeat="t in vm.equalities">
-            <select>
-              <option ng-repeat="genre in vm.genres" ng-value="genre">
-                {{genre}}
-              </option>
-            </select>
+          <div class="row">
+            <div class="input-group">
+              <ui-select multiple tagging ng-model="vm.queryParams.people">
+                <ui-select-match placeholder="Enter people...">{{$item}}</ui-select-match>
+                <ui-select-choices repeat="company in (vm.companies | filter: $select.search)">
+                </ui-select-choices>
+              </ui-select>
+              <span class="input-group-addon" id="trash" ng-click="vm.clearPeople()"><i class="fa fa-trash" aria-hidden="true"></i></span>
+            </div>
           </div>
         </div>
       </form>

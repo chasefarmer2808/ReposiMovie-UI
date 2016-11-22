@@ -11,7 +11,7 @@
     var vm = this;
     vm.genres;
     vm.selectedGenre = '';
-    vm.companies;
+    vm.companies = [' '];
     // vm.cast;
     // vm.crew;
     vm.minReleaseDate;
@@ -47,6 +47,18 @@
       people: []
     };
 
+    vm.clearGenres = function() {
+      vm.queryParams.genres = [];
+    }
+
+    vm.clearCompanies = function() {
+      vm.queryParams.companies = [];
+    }
+
+    vm.clearPeople = function() {
+      vm.queryParams.people = [];
+    }
+
     activate();
 
     function activate() {
@@ -62,11 +74,11 @@
       });
     }
 
-    // function getAllCompanies() {
-    //   return Oracle.getAllCompanies().then(function(data) {
-    //     vm.companies = data.data;
-    //   });
-    // }
+    function getAllCompanies() {
+      return Oracle.getAllCompanies().then(function(data) {
+        vm.companies = data.data;
+      });
+    }
 
     function getMinReleaseDate() {
       return Oracle.getMinReleaseDate().then(function(data) {
