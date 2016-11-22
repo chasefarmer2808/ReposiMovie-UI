@@ -73,12 +73,38 @@
       <form novalidate>
         <div class="form-group col-md-4">
           <label>Genres:</label>
-          <div class="row" ng-repeat="t in vm.equalities">
-            <select>
+          <div class="row">
+            <ui-select multiple ng-model="vm.queryParams.genres">
+              <ui-select-match placeholder="Select a Genre...">
+                {{$item}}
+              </ui-select-match>
+              <ui-select-choices repeat="genre in (vm.genres | filter: $select.search) track by genre">
+                {{genre}}
+              </ui-select-choices>
+            </ui-select>
+          </div>
+
+
+
+          <!-- <div class="row" ng-repeat="g in vm.queryParams.genres">
+            <ui-select ng-model="g">
+              <ui-select-match placeholder="Select a genre...">
+
+                <span ng-bind="vm.queryParams.genres[$index]"></span>
+              </ui-select-match>
+              <ui-select-choices repeat="genre in (vm.genres | filter: $select.search) track by genre">
+                <div ng-click="vm.addGenre(genre)">
+                  <span ng-bind="genre"></span>
+                </div>
+              </ui-select-choices>
+            </ui-select> -->
+
+            <!-- repeat="item in (itemArray | filter: $select.search) track by item.id" -->
+            <!-- <select>
               <option ng-repeat="genre in vm.genres" ng-value="genre">
                 {{genre}}
               </option>
-            </select>
+            </select> -->
           </div>
         </div>
         <div class="form-group col-md-4">

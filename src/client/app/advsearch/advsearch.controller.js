@@ -10,6 +10,7 @@
   function AdvsearchController($q, logger, Oracle) {
     var vm = this;
     vm.genres;
+    vm.selectedGenre = '';
     vm.companies;
     // vm.cast;
     // vm.crew;
@@ -19,7 +20,7 @@
 
     vm.queryParams = {
       title: '',
-      startDate: new Date(vm.minReleaseDate),
+      startDate: new Date(),
       endDate: new Date(),
       avgRating: {
         value: 0,
@@ -46,11 +47,10 @@
       people: []
     };
 
-
-    //activate();
+    activate();
 
     function activate() {
-      var promises = [getAllGenres(), getAllCompanies(), getMinReleaseDate()];
+      var promises = [getAllGenres(), getMinReleaseDate()];
       return $q.all(promises).then(function() {
         logger.info('Activated Adv Search View');
       });
@@ -62,15 +62,16 @@
       });
     }
 
-    function getAllCompanies() {
-      return Oracle.getAllCompanies().then(function(data) {
-        vm.companies = data.data;
-      });
-    }
+    // function getAllCompanies() {
+    //   return Oracle.getAllCompanies().then(function(data) {
+    //     vm.companies = data.data;
+    //   });
+    // }
 
     function getMinReleaseDate() {
       return Oracle.getMinReleaseDate().then(function(data) {
         vm.minReleaseDate = data.data;
+        vm.queryParams.startDate = new Date(vm.minReleaseDate);
       });
     }
 
