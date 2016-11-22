@@ -15,6 +15,7 @@
     // vm.crew;
     vm.minReleaseDate;
     vm.movies;
+    vm.equalities = ['=', '>', '<'];
 
     vm.queryParams = {
       title: '',

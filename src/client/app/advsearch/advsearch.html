@@ -1,5 +1,124 @@
 <section id="advsearch-view" class="mainbar">
-  <p>
-    Advanced search view
-  </p>
+  <div class="container-fluid">
+    <div class="row" style="text-align: center;">
+      <h1>Advanced Search</h1>
+    </div>
+    <div class="row">
+      <form novalidate>
+        <div class="form-group col-md-4">
+          <label>Title:</label>
+          <input type="text" class="form-control" />
+        </div>
+        <div class="form-group col-md-4">
+          <label>Released After:</label>
+          <input type="date" class="form-control" />
+        </div>
+        <div class="form-group col-md-4">
+          <label>Released Before:</label>
+          <input type="date" class="form-control" />
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <form novalidate>
+        <div class="form-group col-md-6">
+          <label>Avg Rating:</label>
+          <input type="number" class="form-control" max="10" />
+          <label>Equality:</label>
+          <select>
+            <option ng-repeat="eq in vm.equalities" ng-value="eq">
+              {{eq}}
+            </option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Rating Count:</label>
+          <input type="number" class="form-control" />
+          <label>Equality:</label>
+          <select>
+            <option ng-repeat="eq in vm.equalities" ng-value="eq">
+              {{eq}}
+            </option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <form novalidate>
+        <div class="form-group col-md-6">
+          <label>Revenue:</label>
+          <input type="number" class="form-control" />
+          <label>Equality:</label>
+          <select>
+            <option ng-repeat="eq in vm.equalities" ng-value="eq">
+              {{eq}}
+            </option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Budget:</label>
+          <input type="number" class="form-control" />
+          <label>Equality:</label>
+          <select>
+            <option ng-repeat="eq in vm.equalities" ng-value="eq">
+              {{eq}}
+            </option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <form novalidate>
+        <div class="form-group col-md-12">
+          <label>Runtime (minutes):</label>
+          <input type="number" class="form-control" />
+          <label>Equality:</label>
+          <select>
+            <option ng-repeat="eq in vm.equalities" ng-value="eq">
+              {{eq}}
+            </option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <form novalidate>
+        <div class="form-group col-md-4">
+          <label>Genres:</label>
+          <div class="row" ng-repeat="t in vm.equalities">
+            <select>
+              <option ng-repeat="genre in vm.genres" ng-value="genre">
+                {{genre}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label>Production Companies:</label>
+          <div class="row" ng-repeat="t in vm.equalities">
+            <select>
+              <option ng-repeat="genre in vm.genres" ng-value="genre">
+                {{genre}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label>People:</label>
+          <div class="row" ng-repeat="t in vm.equalities">
+            <select>
+              <option ng-repeat="genre in vm.genres" ng-value="genre">
+                {{genre}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <div class="col-md-12" style="text-align:center">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </div>
+  </div>
 </section>
