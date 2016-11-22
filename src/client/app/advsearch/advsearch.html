@@ -4,18 +4,18 @@
       <h1>Advanced Search</h1>
     </div>
     <div class="row">
-      <form novalidate>
+      <form name="dateRange" novalidate>
         <div class="form-group col-md-4">
           <label>Title:</label>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" ng-model="vm.queryParams.title"/>
         </div>
         <div class="form-group col-md-4">
           <label>Released After:</label>
-          <input type="date" class="form-control" />
+          <input type="date" class="form-control" ng-model="vm.queryParams.startDate" ng-model-options="{ updateOn: 'blur' }" max={{vm.queryParams.endDate}}/>
         </div>
         <div class="form-group col-md-4">
           <label>Released Before:</label>
-          <input type="date" class="form-control" />
+          <input type="date" class="form-control" ng-model="vm.queryParams.endDate" ng-model-options="{ updateOn: 'blur' }" min={{vm.queryParams.startDate}}/>
         </div>
       </form>
     </div>
@@ -23,22 +23,16 @@
       <form novalidate>
         <div class="form-group col-md-6">
           <label>Avg Rating:</label>
-          <input type="number" class="form-control" max="10" />
+          <input type="number" class="form-control" max="10" min="0" ng-model="vm.queryParams.avgRating.value"/>
           <label>Equality:</label>
-          <select>
-            <option ng-repeat="eq in vm.equalities" ng-value="eq">
-              {{eq}}
-            </option>
+          <select ng-model="vm.queryParams.avgRating.equality" ng-options="eq for eq in vm.equalities" ng-selected="{{eq == vm.queryParams.avgRating.equality}}">
           </select>
         </div>
         <div class="form-group col-md-6">
           <label>Rating Count:</label>
-          <input type="number" class="form-control" />
+          <input type="number" class="form-control" ng-model="vm.queryParams.ratingCount.value" />
           <label>Equality:</label>
-          <select>
-            <option ng-repeat="eq in vm.equalities" ng-value="eq">
-              {{eq}}
-            </option>
+          <select ng-model="vm.queryParams.ratingCount.equality" ng-options="eq for eq in vm.equalities" ng-selected="{{eq == vm.queryParams.ratingCount.equality}}">
           </select>
         </div>
       </form>
@@ -47,22 +41,16 @@
       <form novalidate>
         <div class="form-group col-md-6">
           <label>Revenue:</label>
-          <input type="number" class="form-control" />
+          <input type="number" class="form-control" ng-model="vm.queryParams.revenue.value"/>
           <label>Equality:</label>
-          <select>
-            <option ng-repeat="eq in vm.equalities" ng-value="eq">
-              {{eq}}
-            </option>
+          <select ng-model="vm.queryParams.revenue.equality" ng-options="eq for eq in vm.equalities" ng-selected="{{eq == vm.queryParams.revenue.equality}}">
           </select>
         </div>
         <div class="form-group col-md-6">
           <label>Budget:</label>
-          <input type="number" class="form-control" />
+          <input type="number" class="form-control" ng-model="vm.queryParams.budget.value"/>
           <label>Equality:</label>
-          <select>
-            <option ng-repeat="eq in vm.equalities" ng-value="eq">
-              {{eq}}
-            </option>
+          <select ng-model="vm.queryParams.budget.equality" ng-options="eq for eq in vm.equalities" ng-selected="{{eq == vm.queryParams.budget.equality}}">
           </select>
         </div>
       </form>
@@ -71,9 +59,9 @@
       <form novalidate>
         <div class="form-group col-md-12">
           <label>Runtime (minutes):</label>
-          <input type="number" class="form-control" />
+          <input type="number" class="form-control" ng-model="vm.queryParams.runtime.value"/>
           <label>Equality:</label>
-          <select>
+          <select ng-model="vm.queryParams.runtime.equality" ng-options="eq for eq in vm.equalities" ng-selected="{{eq == vm.queryParams.runtime.equality}}">
             <option ng-repeat="eq in vm.equalities" ng-value="eq">
               {{eq}}
             </option>
@@ -116,9 +104,11 @@
       </form>
     </div>
     <div class="row">
-      <div class="col-md-12" style="text-align:center">
-        <button type="submit" class="btn btn-success">Submit</button>
-      </div>
+      <form novalidate>
+        <div class="col-md-12" style="text-align:center">
+          <button type="submit" class="btn btn-success" ng-disabled="vm.queryParams.startDate > vm.queryParams.endDate">Submit</button>
+        </div>
+      </form>
     </div>
   </div>
 </section>
