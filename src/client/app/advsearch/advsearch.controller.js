@@ -60,7 +60,10 @@
     }
 
     vm.queryMovies = function() {
-      console.log(vm.queryParams);
+      // console.log(vm.queryParams);
+      return Oracle.advSearch(vm.queryParams).then(function(data) {
+        vm.movies = data.data;
+      });
     }
 
     activate();

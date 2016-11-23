@@ -116,7 +116,39 @@ angular.module('app').factory('Oracle', ['$http', '$location',
             path = '/api/v1/get_min_release_date';
 
         return $http.get('http://' + host + ':' + port + path);
-      }
+      },
+
+      advSearch: function(params) {
+        var host = $location.host(),
+            port = '5000',
+            path = '/api/v1/advsearch';
+
+        var queryString = '?';
+
+
+        for (var key in params) {
+          if (params.hasOwnProperty(key)) {
+            if (params[key] instanceof Date) {
+              var dateStr = (params[key].getMonth() + 1) + '-' + params[key].getDate() + '-' + params[key].getFullYear();
+              queryString += '&' + key + '=' + dateStr;
+            } else if (params[key].equality) {
+              queryString += '&' + key + '=' + params[key].value + params[key].equality;
+            } else if (params[key].length > 0 && Array.isArray(params[key])) {
+              params[key].forEach(function(val) {
+                queryString += '&' + key + '=' + val;
+              });
+            } else if (params[key].length > 0) {
+              queryString += '&' + key + '=' + params[key];
+            }
+          }
+        }
+
+        if (queryString[1] === '&') {
+          queryString = queryString.slice(0, 1) + queryString.slice(2, queryString.length);
+        }
+        console.log(queryString);
+        return $http.get('http://' + host + ':' + port + path + queryString);
+      },
     };
     return methods;
   }

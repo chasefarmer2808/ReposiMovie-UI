@@ -31,7 +31,7 @@
     <div class="row">
       <form novalidate>
         <div class="form-group col-md-6">
-          <label>Avg Rating:</label>
+          <label>Avg Rating (Out of 10):</label>
           <input type="number" class="form-control" max="10" min="0" ng-model="vm.queryParams.avgRating.value"/>
           <label>Equality:</label>
           <select ng-model="vm.queryParams.avgRating.equality" ng-options="eq for eq in vm.equalities" ng-selected="{{eq == vm.queryParams.avgRating.equality}}">
