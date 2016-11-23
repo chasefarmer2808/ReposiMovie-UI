@@ -121,7 +121,7 @@ angular.module('app').factory('Oracle', ['$http', '$location',
       advSearch: function(params) {
         var host = $location.host(),
             port = '5000',
-            path = '/api/v1/advsearch';
+            path = '/api/v1/adv_search';
 
         var queryString = '?';
 
