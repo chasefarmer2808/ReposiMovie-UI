@@ -1,5 +1,135 @@
 <section id="advsearch-view" class="mainbar">
-  <p>
-    Advanced search view
-  </p>
+  <style>
+    #trash {
+      cursor: pointer;
+    }
+
+    #trash:hover {
+      background-color: #ac2925;
+    }
+  </style>
+  <div class="container-fluid">
+    <div class="row" style="text-align: center;">
+      <h1>Advanced Search</h1>
+    </div>
+    <div class="row">
+      <form name="dateRange" novalidate>
+        <div class="form-group col-md-4">
+          <label>Title:</label>
+          <input type="text" class="form-control" ng-model="vm.queryParams.title"/>
+        </div>
+        <div class="form-group col-md-4">
+          <label>Released After:</label>
+          <input type="date" class="form-control" ng-model="vm.queryParams.startDate" ng-model-options="{ updateOn: 'blur' }" max={{vm.queryParams.endDate}}/>
+        </div>
+        <div class="form-group col-md-4">
+          <label>Released Before:</label>
+          <input type="date" class="form-control" ng-model="vm.queryParams.endDate" ng-model-options="{ updateOn: 'blur' }" min={{vm.queryParams.startDate}}/>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <form novalidate>
+        <div class="form-group col-md-6">
+          <label>Avg Rating (Out of 10):</label>
+          <input type="number" class="form-control" max="10" min="0" ng-model="vm.queryParams.avgRating.value"/>
+          <label>Equality:</label>
+          <select ng-model="vm.queryParams.avgRating.equality" ng-options="eq for eq in vm.equalities" ng-selected="{{eq == vm.queryParams.avgRating.equality}}">
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Rating Count:</label>
+          <input type="number" class="form-control" ng-model="vm.queryParams.ratingCount.value" />
+          <label>Equality:</label>
+          <select ng-model="vm.queryParams.ratingCount.equality" ng-options="eq for eq in vm.equalities" ng-selected="{{eq == vm.queryParams.ratingCount.equality}}">
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <form novalidate>
+        <div class="form-group col-md-6">
+          <label>Revenue:</label>
+          <input type="number" class="form-control" ng-model="vm.queryParams.revenue.value"/>
+          <label>Equality:</label>
+          <select ng-model="vm.queryParams.revenue.equality" ng-options="eq for eq in vm.equalities" ng-selected="{{eq == vm.queryParams.revenue.equality}}">
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Budget:</label>
+          <input type="number" class="form-control" ng-model="vm.queryParams.budget.value"/>
+          <label>Equality:</label>
+          <select ng-model="vm.queryParams.budget.equality" ng-options="eq for eq in vm.equalities" ng-selected="{{eq == vm.queryParams.budget.equality}}">
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <form novalidate>
+        <div class="form-group col-md-12">
+          <label>Runtime (minutes):</label>
+          <input type="number" class="form-control" ng-model="vm.queryParams.runtime.value"/>
+          <label>Equality:</label>
+          <select ng-model="vm.queryParams.runtime.equality" ng-options="eq for eq in vm.equalities" ng-selected="{{eq == vm.queryParams.runtime.equality}}">
+            <option ng-repeat="eq in vm.equalities" ng-value="eq">
+              {{eq}}
+            </option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <form novalidate>
+        <div class="form-group col-md-4">
+          <label>Genres:</label>
+          <div class="row">
+            <div class="input-group">
+              <ui-select multiple ng-model="vm.queryParams.genres">
+                <ui-select-match placeholder="Select a Genre...">
+                  {{$item}}
+                </ui-select-match>
+                <ui-select-choices repeat="genre in (vm.genres | filter: $select.search) track by genre">
+                  {{genre}}
+                </ui-select-choices>
+              </ui-select>
+              <span class="input-group-addon" id="trash" ng-click="vm.clearGenres()"><i class="fa fa-trash" aria-hidden="true"></i></span>
+            </div>
+          </div>
+          </div>
+        <div class="form-group col-md-4">
+          <label>Production Companies:</label>
+          <div class="row">
+            <div class="input-group">
+              <ui-select multiple tagging ng-model="vm.queryParams.companies">
+                <ui-select-match placeholder="Enter companies...">{{$item}}</ui-select-match>
+                <ui-select-choices repeat="company in (vm.companies | filter: $select.search)">
+                </ui-select-choices>
+              </ui-select>
+              <span class="input-group-addon" id="trash" ng-click="vm.clearCompanies()"><i class="fa fa-trash" aria-hidden="true"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label>People:</label>
+          <div class="row">
+            <div class="input-group">
+              <ui-select multiple tagging ng-model="vm.queryParams.people">
+                <ui-select-match placeholder="Enter people...">{{$item}}</ui-select-match>
+                <ui-select-choices repeat="company in (vm.companies | filter: $select.search)">
+                </ui-select-choices>
+              </ui-select>
+              <span class="input-group-addon" id="trash" ng-click="vm.clearPeople()"><i class="fa fa-trash" aria-hidden="true"></i></span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <form novalidate>
+        <div class="col-md-12" style="text-align:center">
+          <button type="submit" class="btn btn-success" ng-disabled="vm.queryParams.startDate > vm.queryParams.endDate" ng-click="vm.queryMovies()">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </section>

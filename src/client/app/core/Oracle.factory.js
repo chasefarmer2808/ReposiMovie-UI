@@ -45,7 +45,7 @@ angular.module('app').factory('Oracle', ['$http', '$location',
         var query = (!person_id)? '' : ('?person_id=' + person_id);
 	return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/person' + ((!query)? '' : query));
       },
-	  
+
 	  getTop10: function() {
         var host = $location.host(),
             port = '5000',
@@ -53,7 +53,7 @@ angular.module('app').factory('Oracle', ['$http', '$location',
 
         return $http.get('http://' + host + ':' + port + path);
       },
-	  
+
 	  getTop10_box: function() {
         var host = $location.host(),
             port = '5000',
@@ -61,7 +61,7 @@ angular.module('app').factory('Oracle', ['$http', '$location',
 
         return $http.get('http://' + host + ':' + port + path);
       },
-	  
+
 	  getTop10_genres: function() {
         var host = $location.host(),
             port = '5000',
@@ -69,7 +69,7 @@ angular.module('app').factory('Oracle', ['$http', '$location',
 
         return $http.get('http://' + host + ':' + port + path);
       },
-	  
+
 	  getTop10_worst: function() {
         var host = $location.host(),
             port = '5000',
@@ -84,10 +84,71 @@ angular.module('app').factory('Oracle', ['$http', '$location',
             path = '/api/v1/get_all_genres';
 
         return $http.get('http://' + host + ':' + port + path);
-      }
-	  
-	  
-	  
+      },
+
+      getAllCompanies: function() {
+        var host = $location.host(),
+            port = '5000',
+            path = '/api/v1/get_all_companies';
+
+        return $http.get('http://' + host + ':' + port + path);
+      },
+
+      getAllCast: function() {
+        var host = $location.host(),
+            port = '5000',
+            path = '/api/v1/get_all_cast';
+
+        return $http.get('http://' + host + ':' + port + path);
+      },
+
+      getAllCrew: function() {
+        var host = $location.host(),
+            port = '5000',
+            path = '/api/v1/get_all_crew';
+
+        return $http.get('http://' + host + ':' + port + path);
+      },
+
+      getMinReleaseDate: function() {
+        var host = $location.host(),
+            port = '5000',
+            path = '/api/v1/get_min_release_date';
+
+        return $http.get('http://' + host + ':' + port + path);
+      },
+
+      advSearch: function(params) {
+        var host = $location.host(),
+            port = '5000',
+            path = '/api/v1/adv_search';
+
+        var queryString = '?';
+
+
+        for (var key in params) {
+          if (params.hasOwnProperty(key)) {
+            if (params[key] instanceof Date) {
+              var dateStr = (params[key].getMonth() + 1) + '-' + params[key].getDate() + '-' + params[key].getFullYear();
+              queryString += '&' + key + '=' + dateStr;
+            } else if (params[key].equality) {
+              queryString += '&' + key + '=' + params[key].value + params[key].equality;
+            } else if (params[key].length > 0 && Array.isArray(params[key])) {
+              params[key].forEach(function(val) {
+                queryString += '&' + key + '=' + val;
+              });
+            } else if (params[key].length > 0) {
+              queryString += '&' + key + '=' + params[key];
+            }
+          }
+        }
+
+        if (queryString[1] === '&') {
+          queryString = queryString.slice(0, 1) + queryString.slice(2, queryString.length);
+        }
+        console.log(queryString);
+        return $http.get('http://' + host + ':' + port + path + queryString);
+      },
     };
     return methods;
   }
