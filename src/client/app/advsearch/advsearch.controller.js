@@ -44,7 +44,8 @@
       },
       genres: [],
       companies: [],
-      people: []
+      people: [],
+      limit: 25
     };
 
     vm.clearGenres = function() {
