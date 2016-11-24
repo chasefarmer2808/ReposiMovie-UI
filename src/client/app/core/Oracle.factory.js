@@ -1,8 +1,17 @@
 angular.module('app').factory('Oracle', ['$http', '$location',
   function($http, $location) {
     var methods = {
-      getMoviesByTitle: function(title) {
+      getMoviesByTitle: function(title, limit) {
         var query = (!title)? '' : ('?title=' + title);
+
+        if (limit) {
+          if (query.indexOf('?') > -1) {
+            query += '&limit=' + limit;
+          } else {
+            query += '?limit=' + limit;
+          }
+        }
+        
         return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/search_title' + query);
       },
 

@@ -2,22 +2,22 @@
   <div style="text-align: center;">
     <h2>Top 10</h2>
   </div>
-  
+
   <div class="container">
     <div class="col-md-6">
 	  <div style="text-align: center;">
-	    <h3>All Time Movies</h3>
+	    <h3>All Time Best Movies</h3>
 	  </div>
 	  <custom-table data="vm.movies" columns="vm.movieTableColumns2" search="false" poster="false"></custom-table>
 	</div>
 	<div class="col-md-6">
 	  <div style="text-align: center;">
-	    <h3>Box Office Movies</h3>
+	    <h3>Top Box Office Movies</h3>
 	  </div>
 	  <custom-table data="vm.movies_box" columns="vm.movieTableColumns2" search="false" poster="false"></custom-table>
 	</div>
   </div>
-  
+
   <div class="container">
     <div class="col-md-6">
 	  <div style="text-align: center;">
@@ -27,12 +27,12 @@
 	</div>
 	<div class="col-md-6">
 	  <div style="text-align: center;">
-	    <h3>Genres</h3>
+	    <h3>Most Popular Genres</h3>
 	  </div>
 	  <custom-table data="vm.genres" columns="vm.top10GenresColumns" search="false" poster="false"></custom-table>
 	</div>
   </div>
-  
+
   <div class="container">
 	<div class="col-md-6">
 	  <movie-table movies="getTop10_genres()"></movie-table>
