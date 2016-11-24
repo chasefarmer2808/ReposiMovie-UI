@@ -1,21 +1,38 @@
 angular.module('app').factory('Oracle', ['$http', '$location',
   function($http, $location) {
     var methods = {
-      getMoviesByTitle: function(title) {
+      getMoviesByTitle: function(title, limit) {
         var query = (!title)? '' : ('?title=' + title);
+
+        if (limit) {
+          if (query.indexOf('?') > -1) {
+            query += '&limit=' + limit;
+          } else {
+            query += '?limit=' + limit;
+          }
+        }
+        
         return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/search_title' + query);
       },
 
-      getMoviesByGenre: function(genre) {
+      getMoviesByGenre: function(genre, limit) {
         var query = ''
         if (genre) {
           if (genre.length > 0) {
-            query = '?'
+            query = '?';
             for (var i = 0; i < genre.length; i++) {
               if (i > 0)
-                query += '&';
+              query += '&';
               query += 'genre=' + genre[i];
             }
+          }
+        }
+
+        if (limit) {
+          if (query.indexOf('?') > -1) {
+            query += '&limit=' + limit;
+          } else {
+            query += '?limit=' + limit;
           }
         }
 	return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/search_genre' + query);
@@ -138,6 +155,8 @@ angular.module('app').factory('Oracle', ['$http', '$location',
                 queryString += '&' + key + '=' + val;
               });
             } else if (params[key].length > 0) {
+              queryString += '&' + key + '=' + params[key];
+            } else if (Number.isInteger(params[key])) {
               queryString += '&' + key + '=' + params[key];
             }
           }

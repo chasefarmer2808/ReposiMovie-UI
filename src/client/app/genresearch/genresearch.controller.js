@@ -10,6 +10,7 @@
   function GenresearchController($q, logger, Oracle, movieTableColumns) {
     var vm = this;
     vm.genres;
+    vm.limit = 25;
     vm.movies;
     vm.selectedGenres = {};
     vm.movieTableColumns = movieTableColumns;
@@ -50,7 +51,7 @@
         }
       }
 
-      return Oracle.getMoviesByGenre(genres).then(function(data) {
+      return Oracle.getMoviesByGenre(genres, vm.limit).then(function(data) {
         vm.movies = data.data;
       })
     }
