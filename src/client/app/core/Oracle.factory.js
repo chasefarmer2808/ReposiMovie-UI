@@ -135,6 +135,14 @@ angular.module('app').factory('Oracle', ['$http', '$location',
         return $http.get('http://' + host + ':' + port + path);
       },
 
+      getTableCounts: function() {
+        var host = $location.host(),
+            port = '5000',
+            path = '/api/v1/get_table_counts';
+
+        return $http.get('http://' + host + ':' + port + path);
+      },
+
       advSearch: function(params) {
         var host = $location.host(),
             port = '5000',

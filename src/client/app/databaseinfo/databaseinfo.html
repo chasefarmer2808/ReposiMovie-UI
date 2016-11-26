@@ -1,0 +1,31 @@
+<section id="databaseinfo-view" class="mainbar">
+	<div class="container-fluid">
+		<div class="row" style="text-align:center">
+			<h1>Database Information</h1>
+		</div>
+		<hr />
+		<div class="row">
+			<form novalidate>
+		        <div class="col-md-12" style="text-align:center">
+		          <button type="submit" class="btn btn-success" ng-click="vm.getTableCounts()">Fetch Table Counts</button>
+		        </div>
+		    </form>
+		</div>
+		<div class="row">
+			<table class="table table-hover table-bordered table-stripped" ng-if="vm.counts">
+				<thead>
+					<td>Table Name</td>
+					<td>Tuple Count</td>
+				</thead>
+				<tr ng-repeat="count in vm.counts">
+					<td>{{count.name}}</td>
+					<td>{{count.count | number}}</td>
+				</tr>
+				<tr>
+					<td>Total</td>
+					<td>{{vm.total | number}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</section>

@@ -14,7 +14,8 @@
     'app.advsearch',
     'app.movie',
     'app.person',
-    'app.topten'
+    'app.topten',
+    'app.databaseinfo'
   ]);
 
 })();
