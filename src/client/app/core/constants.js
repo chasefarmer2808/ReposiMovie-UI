@@ -10,5 +10,6 @@
 	  .constant('movieTableColumns2', ['title', 'release_date', 'rating_average', 'run_time'])
     .constant('castTableColumns', ['name', 'role'])
     .constant('crewTableColumns', ['name', 'job', 'department'])
+    .constant('nameTableColumns', ['name'])
 	.constant('top10GenresColumns', ['name']);
 })();

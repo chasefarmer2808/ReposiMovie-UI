@@ -11,7 +11,7 @@ angular.module('app').factory('Oracle', ['$http', '$location',
             query += '?limit=' + limit;
           }
         }
-        
+
         return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/search_title' + query);
       },
 
@@ -142,7 +142,18 @@ angular.module('app').factory('Oracle', ['$http', '$location',
 
         return $http.get('http://' + host + ':' + port + path);
       },
+      getPeopleByName: function(name, limit){
+        var query = (!name)? '' : ('?name=' + name);
+        if(limit){
+          if(query.indexOf('?') > -1){
+            query += '&limit=' + limit;
+          }else{
+            query += '?limit=' + limit;
+          }
+        }
 
+        return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/search_name' + query);
+      },
       advSearch: function(params) {
         var host = $location.host(),
             port = '5000',
