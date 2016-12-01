@@ -44,8 +44,14 @@
   </div>
   <div>
     <div class="container" ng-show="vm.name">
-      <h2 style="text-align: center;">Results</h2>
-      <custom-table data="vm.name" columns="vm.nameTableColumns" search="true" poster="true"></custom-table>
+      <div class="row">
+        <h2 style="text-align: center;">Results ({{vm.name.length}})</h2>
+      </div>
+      <div class="row" style="text-align: center;">
+        <div class="col-md-offset-2 col-md-8">
+          <custom-table data="vm.name" columns="vm.nameTableColumns" search="true" poster="true"></custom-table>
+        </div>
+      </div>
     </div>
   </div>
 </section>
