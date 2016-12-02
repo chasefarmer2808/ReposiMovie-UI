@@ -53,6 +53,18 @@ angular.module('app').factory('Oracle', ['$http', '$location',
 	return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/search_castcrew' + query);
       },
 
+      getMoviesByDirector: function(name) {
+        var host = $location.host(),
+            port = '5000',
+            path = '/api/v1/movies_by_director';
+
+        if (name) {
+          path += '?name=' + name;
+        }
+
+        return $http.get('http://' + host + ':' + port + path);
+      },
+
       getMovieById: function(movie_id) {
         var query = (!movie_id)? '' : ('?movie_id=' + movie_id);
 	return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/movie' + query);

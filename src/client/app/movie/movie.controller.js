@@ -5,13 +5,14 @@
     .module('app.movie')
     .controller('MovieController', MovieController);
 
-  MovieController.$inject = ['$q', 'logger', 'Oracle', '$stateParams', '$window', 'castTableColumns', 'crewTableColumns'];
+  MovieController.$inject = ['$q', 'logger', 'Oracle', '$stateParams', '$window', 'castTableColumns', 'crewTableColumns', 'selectrandommovies'];
   /*@ngInject*/
-  function MovieController($q, logger, Oracle, $stateParams, $window, castTableColumns, crewTableColumns) {
+  function MovieController($q, logger, Oracle, $stateParams, $window, castTableColumns, crewTableColumns, selectrandommovies) {
     var vm = this;
     vm.movieId = $stateParams.movieId;
     vm.movie;
     vm.similarMovies = [];
+    vm.moviesByDirectors = [];
     vm.featuredCrew = [];
     vm.castColumns = castTableColumns;
     vm.crewColumns = crewTableColumns;
@@ -32,7 +33,24 @@
         vm.movie.crew.forEach(function(crew) {
           if (crew.job == 'Director') {
             vm.featuredCrew.push(crew);
+
+            var dir = {
+              name: crew.name,
+              movies: []
+            };
+            vm.moviesByDirectors.push(dir);
           }
+        });
+        getMoviesByDirector();
+      });
+    }
+
+    function getMoviesByDirector() {
+      vm.moviesByDirectors.forEach(function(dir) {
+        return Oracle.getMoviesByDirector(dir.name).then(function(data) {
+          var movies = data.data;
+
+          dir.movies = selectrandommovies.selectRandom(movies, vm.movie.movie_id);
         });
       });
     }
