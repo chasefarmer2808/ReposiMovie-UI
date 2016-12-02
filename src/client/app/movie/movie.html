@@ -87,6 +87,18 @@
       </div>
     </div>
     <hr />
+    <div class="container-fluid" ng-repeat="dir in vm.moviesByDirectors" ng-if="vm.moviesByDirectors[0].movies.length > 0">
+      <div class="row" style="text-align: center;">
+        <h2>More By {{dir.name}}</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-2" ng-repeat="movie in dir.movies" ng-click="vm.goToMovieDetail(movie.movie_id)" style="text-align: center; cursor:pointer">
+          {{movie.title}}
+          <img src="{{movie.poster_path | poster}}" style="width: 95%; height: 95%;"/>
+        </div>
+      </div>
+    </div>
+    <hr />
     <div class="container-fluid">
       <div class="row">
         <h3 class="col-md-6" style="text-align:center;">Cast ({{vm.movie.cast.length}})</h3>
