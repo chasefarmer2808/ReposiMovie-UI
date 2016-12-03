@@ -123,21 +123,13 @@ angular.module('app').factory('Oracle', ['$http', '$location',
         return $http.get('http://' + host + ':' + port + path);
       },
 
-      getAllCast: function() {
+      getAllPeople: function() {
         var host = $location.host(),
             port = '5000',
-            path = '/api/v1/get_all_cast';
+            path = '/api/v1/get_all_people';
 
         return $http.get('http://' + host + ':' + port + path);
-      },
-
-      getAllCrew: function() {
-        var host = $location.host(),
-            port = '5000',
-            path = '/api/v1/get_all_crew';
-
-        return $http.get('http://' + host + ':' + port + path);
-      },
+      }
 
       getMinReleaseDate: function() {
         var host = $location.host(),
