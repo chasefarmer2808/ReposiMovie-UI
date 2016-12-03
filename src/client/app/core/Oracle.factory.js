@@ -180,7 +180,9 @@ angular.module('app').factory('Oracle', ['$http', '$location',
               var dateStr = (params[key].getMonth() + 1) + '-' + params[key].getDate() + '-' + params[key].getFullYear();
               queryString += '&' + key + '=' + dateStr;
             } else if (params[key].equality) {
-              queryString += '&' + key + '=' + params[key].value + params[key].equality;
+              if (params[key].equality === '=')
+                params[key].equality = '%3D';
+              queryString += '&' + key + '=' + params[key].equality + '+' + params[key].value;
             } else if (params[key].length > 0 && Array.isArray(params[key])) {
               params[key].forEach(function(val) {
                 queryString += '&' + key + '=' + val;

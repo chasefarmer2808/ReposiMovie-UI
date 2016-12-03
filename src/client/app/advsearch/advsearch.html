@@ -104,9 +104,10 @@
           <label>Production Companies:</label>
           <div class="row">
             <div class="input-group">
-              <ui-select multiple tagging ng-model="vm.queryParams.companies">
+              <ui-select multiple ng-model="vm.queryParams.companies">
                 <ui-select-match placeholder="Enter companies...">{{$item}}</ui-select-match>
-                <ui-select-choices repeat="company in (vm.companies | filter: $select.search)">
+                <ui-select-choices repeat="company in (vm.companies | filter: $select.search | limitTo: 50)">
+                  {{company}}
                 </ui-select-choices>
               </ui-select>
               <span class="input-group-addon" id="trash" ng-click="vm.clearCompanies()"><i class="fa fa-trash" aria-hidden="true"></i></span>
@@ -137,3 +138,4 @@
     </div>
   </div>
 </section>
+e

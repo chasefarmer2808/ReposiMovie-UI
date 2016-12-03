@@ -12,8 +12,8 @@
     vm.genres;
     vm.selectedGenre = '';
     vm.companies = [' '];
-    // vm.cast;
-    // vm.crew;
+    vm.cast;
+    vm.crew;
     vm.minReleaseDate;
     vm.movies;
     vm.equalities = ['=', '>', '<'];
@@ -63,6 +63,7 @@
     vm.queryMovies = function() {
       // console.log(vm.queryParams);
       return Oracle.advSearch(vm.queryParams).then(function(data) {
+        console.log(data.data);
         vm.movies = data.data;
       });
     }
@@ -70,7 +71,7 @@
     activate();
 
     function activate() {
-      var promises = [getAllGenres(), getMinReleaseDate()];
+      var promises = [getAllGenres(), getMinReleaseDate(), getAllCompanies()];
       return $q.all(promises).then(function() {
         logger.info('Activated Adv Search View');
       });
@@ -85,6 +86,7 @@
     function getAllCompanies() {
       return Oracle.getAllCompanies().then(function(data) {
         vm.companies = data.data;
+	console.log(data.data);
       });
     }
 
@@ -95,16 +97,16 @@
       });
     }
 
-    // function getAllCast() {
-    //   return Oracle.getAllCast().then(function(data) {
-    //     vm.cast = data.data;
-    //   });
-    // }
-    //
-    // function getAllCrew() {
-    //   return Oracle.getAllCrew().then(function(data) {
-    //     vm.crew = data.data;
-    //   });
-    // }
+     function getAllCast() {
+       return Oracle.getAllCast().then(function(data) {
+         vm.cast = data.data;
+       });
+     }
+    
+     function getAllCrew() {
+       return Oracle.getAllCrew().then(function(data) {
+         vm.crew = data.data;
+       });
+    }
   }
 })();
