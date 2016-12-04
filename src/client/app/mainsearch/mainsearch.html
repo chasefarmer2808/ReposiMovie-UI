@@ -32,8 +32,8 @@
       </div>
     </div>
   </div>
-  <div class="container" ng-show="vm.movies">
-    <h2 style="text-align: center;">Results</h2>
+  <div class="container" ng-show="vm.movies.length > 0">
+    <h2 style="text-align: center;">Results({{vm.movies.length}})</h2>
     <custom-table data="vm.movies" columns="vm.movieTableColumns" search="true" poster="true"></custom-table>
   </div>
 </section>
