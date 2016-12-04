@@ -178,10 +178,6 @@ angular.module('app').factory('Oracle', ['$http', '$location',
               } else {
                 queryString += '&' + key + '=' + params[key].equality + '+' + params[key].value;
               }
-                //params[key].equality = '%3D';
-                //var equ = params[key].equality;
-                //var equ = '%3D';
-              //queryString += '&' + key + '=' + equ + '+' + params[key].value;
             } else if (params[key].length > 0 && Array.isArray(params[key])) {
               params[key].forEach(function(val) {
                 queryString += '&' + key + '=' + val;
