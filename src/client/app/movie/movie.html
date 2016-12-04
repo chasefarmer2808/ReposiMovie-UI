@@ -34,13 +34,19 @@
             </p>
           </div>
           <br />
-          <div class="col-md-4">
+          <div class="col-md-3">
             <h4>Genre(s): </h4>
             <p ng-repeat="g in vm.movie.genres">
               {{g.name}}
             </p>
           </div>
           <div class="col-md-5">
+            <h4>Produced by: </h4>
+            <p ng-repeat="c in vm.movie.production_companies">
+              {{c.name}}
+            </p>
+          </div>
+          <div class="col-md-4">
             <h4>Featured Crew: </h4>
             <p ng-repeat="c in vm.featuredCrew">
               {{c.name}}, {{c.job}}
