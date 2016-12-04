@@ -5,9 +5,9 @@
     .module('app.advsearch')
     .controller('AdvsearchController', AdvsearchController);
 
-  AdvsearchController.$inject = ['$q', 'logger', 'Oracle'];
+  AdvsearchController.$inject = ['$q', 'logger', 'Oracle', 'movieTableColumns'];
   /*@ngInject*/
-  function AdvsearchController($q, logger, Oracle) {
+  function AdvsearchController($q, logger, Oracle, movieTableColumns) {
     var vm = this;
     vm.genres;
     vm.selectedGenre = '';
@@ -17,6 +17,7 @@
     vm.minReleaseDate;
     vm.movies;
     vm.equalities = ['=', '>', '<'];
+    vm.movieTableColumns = movieTableColumns;
 
     vm.queryParams = {
       title: '',
@@ -86,7 +87,6 @@
     function getAllCompanies() {
       return Oracle.getAllCompanies().then(function(data) {
         vm.companies = data.data;
-	console.log(data.data);
       });
     }
 
@@ -97,16 +97,10 @@
       });
     }
 
-     function getAllCast() {
-       return Oracle.getAllCast().then(function(data) {
-         vm.cast = data.data;
+     function getAllPeople() {
+       return Oracle.getAllPeople().then(function(data) {
+         vm.people = data.data;
        });
      }
-    
-     function getAllCrew() {
-       return Oracle.getAllCrew().then(function(data) {
-         vm.crew = data.data;
-       });
-    }
   }
 })();

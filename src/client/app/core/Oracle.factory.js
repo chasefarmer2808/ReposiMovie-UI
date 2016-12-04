@@ -129,7 +129,7 @@ angular.module('app').factory('Oracle', ['$http', '$location',
             path = '/api/v1/get_all_people';
 
         return $http.get('http://' + host + ':' + port + path);
-      }
+      },
 
       getMinReleaseDate: function() {
         var host = $location.host(),
