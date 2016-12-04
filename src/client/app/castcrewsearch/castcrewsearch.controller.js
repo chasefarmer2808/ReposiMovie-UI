@@ -5,10 +5,11 @@
     .module('app.castcrewsearch')
     .controller('CastCrewsearchController', CastCrewsearchController);
 
-  CastCrewsearchController.$inject = ['$q', 'logger', 'Oracle'];
+  CastCrewsearchController.$inject = ['$q', 'logger', 'Oracle', 'movieTableColumns'];
   /*@ngInject*/
-  function CastCrewsearchController($q, logger, Oracle) {
+  function CastCrewsearchController($q, logger, Oracle, movieTableColumns) {
     var vm = this;
+    vm.movieTableColumns = movieTableColumns;
 
     vm.names = [""];
 
