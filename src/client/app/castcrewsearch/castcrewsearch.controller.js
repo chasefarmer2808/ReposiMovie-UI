@@ -11,7 +11,11 @@
     var vm = this;
     vm.movieTableColumns = movieTableColumns;
 
-    vm.names = [""];
+    vm.names = [];
+
+    vm.clearPeople = function() {
+      vm.names = [];
+    }
 
     vm.findMovies = function() {
       Oracle.getMoviesByCastCrew(vm.names)
