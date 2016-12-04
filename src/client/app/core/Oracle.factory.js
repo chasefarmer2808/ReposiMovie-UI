@@ -38,8 +38,8 @@ angular.module('app').factory('Oracle', ['$http', '$location',
 	return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/search_genre' + query);
       },
 
-      getMoviesByCastCrew: function(name) {
-        var query = ''
+      getMoviesByCastCrew: function(name, limit) {
+        var query = '';
         if (name) {
           if (name.length > 0) {
             query = '?'
@@ -52,8 +52,16 @@ angular.module('app').factory('Oracle', ['$http', '$location',
             }
           }
         }
+
+        if(limit){
+          if(query.indexOf('?') > -1){
+            query += '&limit=' + limit;
+          }else{
+            query += '?limit=' + limit;
+          }
+        }
         console.log(query);
-	return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/search_castcrew' + query);
+	      return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/search_castcrew' + query);
       },
 
       getMoviesByDirector: function(name) {

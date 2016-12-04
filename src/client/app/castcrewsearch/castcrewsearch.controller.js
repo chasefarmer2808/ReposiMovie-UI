@@ -12,13 +12,14 @@
     vm.movieTableColumns = movieTableColumns;
 
     vm.names = [];
+    vm.limit = 25;
 
     vm.clearPeople = function() {
       vm.names = [];
     }
 
     vm.findMovies = function() {
-      Oracle.getMoviesByCastCrew(vm.names)
+      Oracle.getMoviesByCastCrew(vm.names, vm.limit)
         .then(function(response) {
           vm.movies = response.data
           console.log(response.data);

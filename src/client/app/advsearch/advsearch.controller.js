@@ -47,6 +47,14 @@
       limit: 25
     };
 
+    vm.resetMinDate = function() {
+      vm.queryParams.startDate = new Date(vm.minReleaseDate);
+    }
+
+    vm.resetMaxDate = function() {
+      vm.queryParams.endDate = new Date();
+    }
+
     vm.clearGenres = function() {
       vm.queryParams.genres = [];
     }

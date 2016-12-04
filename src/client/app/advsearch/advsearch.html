@@ -21,10 +21,12 @@
         <div class="form-group col-md-4">
           <label>Released After:</label>
           <input type="date" class="form-control" ng-model="vm.queryParams.startDate" ng-model-options="{ updateOn: 'blur' }" max={{vm.queryParams.endDate}}/>
+          <span class="fa fa-undo" aria-hidden="true" style="cursor: pointer;" ng-click="vm.resetMinDate()"></span>
         </div>
         <div class="form-group col-md-4">
           <label>Released Before:</label>
           <input type="date" class="form-control" ng-model="vm.queryParams.endDate" ng-model-options="{ updateOn: 'blur' }" min={{vm.queryParams.startDate}}/>
+          <span class="fa fa-undo" aria-hidden="true" style="cursor: pointer;" ng-click="vm.resetMaxDate()"></span>
         </div>
       </form>
     </div>
@@ -137,7 +139,10 @@
       </form>
     </div>
   </div>
-  <div class="container">
+  <div class="container" ng-if="vm.movies.length > 0">
+    <div class="row">
+      <h2 style="text-align:center">Results({{vm.movies.length}}):</h2>
+    </div>
     <custom-table data="vm.movies" columns="vm.movieTableColumns" search="true" poster="false"></custom-table>
   </div>
 </section>
