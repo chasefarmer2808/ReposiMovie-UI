@@ -44,12 +44,15 @@ angular.module('app').factory('Oracle', ['$http', '$location',
           if (name.length > 0) {
             query = '?'
             for (var i = 0; i < name.length; i++) {
-              if (i > 0)
-                query += '&';
-              query += 'name=' + name[i].toLowerCase();
+              if (name[i].length > 0) {
+                if (i > 0)
+                  query += '&';
+                query += 'name=' + name[i].toLowerCase();
+              }
             }
           }
         }
+        console.log(query);
 	return $http.get('http://' + $location.host() + ':' + '5000' + '/api/v1/search_castcrew' + query);
       },
 
