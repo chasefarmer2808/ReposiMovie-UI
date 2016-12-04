@@ -42,7 +42,7 @@
   <tbody>
     <tr ng-repeat="data in vm.data | orderBy:vm.sortType:vm.sortReverse | filter:vm.searchData" ng-click="vm.goToDataDetail(data)">
       <td style="text-align:center;" ng-if="vm.poster">
-        <img src="{{data.poster_path | poster}}" style="width: 80%; height: 35%" />
+        <img src="{{data.poster_path | poster}}" style="width: 80%" />
       </td>
       <td ng-repeat="col in vm.columns">
         {{data[col] | decimalFilter}}
