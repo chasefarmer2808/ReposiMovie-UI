@@ -12,8 +12,6 @@
     vm.genres;
     vm.selectedGenre = '';
     vm.companies = [' '];
-    vm.cast;
-    vm.crew;
     vm.minReleaseDate;
     vm.movies;
     vm.equalities = ['=', '>', '<'];
