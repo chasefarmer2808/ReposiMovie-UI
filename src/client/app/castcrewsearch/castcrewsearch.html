@@ -1,19 +1,21 @@
 <section id="castcrewsearch-view" class="mainbar">
+  <style>
+    #trash {
+      cursor: pointer;
+    }
+
+    #trash:hover {
+      background-color: #ac2925;
+    }
+  </style>
   <form class="form-group">
-    <!-- <div ng-repeat="name in vm.names track by $index">
-      <input class="form-control" ng-model="vm.names[$index]">
-      <button type="button" class="btn" ng-click="(vm.names.length != 1) && vm.names.splice($index,1)"><i class="fa fa-remove"></i></button>
-      <button type="button" class="btn" ng-click="vm.names.push('')" ng-show="$index == vm.names.length - 1">New Person</button>
-    </div>
-    <button class="btn" ng-click="vm.findMovies()">hi</button> -->
-    <!-- <label>People:</label> -->
     <h1 style="text-align:center">Search for Movies by Cast or Crew</h1>
     <div class="row">
       <div class="col-md-12">
         <div class="input-group" style="text-align:center">
           <ui-select multiple tagging ng-model="vm.names">
             <ui-select-match placeholder="Enter people...">{{$item}}</ui-select-match>
-            <ui-select-choices repeat="person in (vm.people | filter: $select.search | limitTo: 50)">
+            <ui-select-choices repeat="person in []">
             </ui-select-choices>
           </ui-select>
           <span class="input-group-addon" id="trash" ng-click="vm.clearPeople()"><i class="fa fa-trash" aria-hidden="true"></i></span>
