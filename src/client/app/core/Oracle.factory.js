@@ -172,9 +172,16 @@ angular.module('app').factory('Oracle', ['$http', '$location',
               var dateStr = (params[key].getMonth() + 1) + '-' + params[key].getDate() + '-' + params[key].getFullYear();
               queryString += '&' + key + '=' + dateStr;
             } else if (params[key].equality) {
-              if (params[key].equality === '=')
+              if (params[key].equality === '=') {
+                var equ = '%3D';
+                queryString += '&' + key + '=' + equ + '+' + params[key].value;
+              } else {
+                queryString += '&' + key + '=' + params[key].equality + '+' + params[key].value;
+              }
                 //params[key].equality = '%3D';
-              queryString += '&' + key + '=' + '%3D' + '+' + params[key].value;
+                //var equ = params[key].equality;
+                //var equ = '%3D';
+              //queryString += '&' + key + '=' + equ + '+' + params[key].value;
             } else if (params[key].length > 0 && Array.isArray(params[key])) {
               params[key].forEach(function(val) {
                 queryString += '&' + key + '=' + val;
