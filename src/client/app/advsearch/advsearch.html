@@ -120,7 +120,7 @@
             <div class="input-group">
               <ui-select multiple tagging ng-model="vm.queryParams.people">
                 <ui-select-match placeholder="Enter people...">{{$item}}</ui-select-match>
-                <ui-select-choices repeat="person in (vm.people | filter: $select.search | limitTo: 50)">
+                <ui-select-choices repeat="person in []">
                 </ui-select-choices>
               </ui-select>
               <span class="input-group-addon" id="trash" ng-click="vm.clearPeople()"><i class="fa fa-trash" aria-hidden="true"></i></span>
